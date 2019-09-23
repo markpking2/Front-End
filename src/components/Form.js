@@ -1,14 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form as FormikForm } from 'formik';
 import { withFormik } from "formik";
 import * as Yup from 'yup';
-import axios from 'axios';
-import { Route, Switch, Prompt, Redirect, matchPath } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import LiabilityWaiver from './LiabilityWaiver';
 import NamePhone from './NamePhone';
 import Submit from './Submit';
+import {connect} from 'react-redux';
+import {sendMessage} from '../actions';
+import styled from 'styled-components';
+import PrivateRoute from './PrivateRoute';
+import {axiosWithAuth} from './AxiosAuth';
+
+const OuterDiv = styled.div `
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+`
+
+const FormContainer = styled.div `
+  flex-direction: row;
+  justify-content: center;
+  padding: 2rem 4rem;
+  margin: 0 0 0 25%;
+  width: 45%;
+  @media screen and (max-width: 800px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 600px) {
+    margin: 0 auto;
+    width: 80%;
+  }
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 0px;
+
+`
+
+const FormHeading = styled.h1 `
+  color: black;
+  font-weight: regular;
+`
 
 function Form(props) {
+
+  useEffect(()=>{
+    const token = localStorage.getItem('ec-token');
+    if(token){
+        axiosWithAuth()
+        .get('')
+        .then(res=>{
+            //do nothing
+            //token authenticated
+        })
+        .catch(err=>{
+            localStorage.setItem('ec-token', null);
+            props.history.push('/login');
+            //incorrect token, remove token and push back to login page
+        })
+    }
+},[])
+
   const [submitted, setSubmitted] = useState(false);
 
   const {
@@ -20,30 +72,32 @@ function Form(props) {
   
   return (
     <div>
-      <Prompt
-        when={!submitted}
-        message={({ pathname }) => {
-          return matchPath(pathname, { path: '/form' })
-            ? true
-            : 'Are you sure you want to navigate away?';
-        }}
-      />
-      <FormikForm>
-        <Switch>
-          <Redirect from='/form' exact to='/form/namephone' />
-          <Route path='/form/namephone' render={(props) => <NamePhone {...props} values={values} touched={touched}
-            errors={errors}
-          />} />
-          <Route path='/form/waiver' component={LiabilityWaiver} />
-          <Route path ='/form/submit' render={(props) => <Submit values={values} setSubmitted={setSubmitted} push={props.history.push}/>} />
-        </Switch>
-      </FormikForm>
+      <OuterDiv>
+        <FormContainer>
+          <FormikForm>
+            <FormHeading>Big Title</FormHeading>
+            <Switch>
+              <Redirect from='/form' exact to='/form/namephone' />
+              <Route path='/form/namephone' render={(props) => <NamePhone {...props} values={values} touched={touched}
+                errors={errors}
+              />} />
+                
+              <Route path='/form/waiver' component={LiabilityWaiver} />
+              <Route path ='/form/submit' render={(props) => <Submit values={values} setSubmitted={setSubmitted} push={props.history.push}/>} />
+              {/* <PrivateRoute path="/form/namephone-pr" component={props=> <NamePhone {...props} values={values} touched={touched} errors={errors} />} />*/}
+              {/* <PrivateRoute path="/form/waiver-pr" component={props=> <LiabilityWaiver {...props} />} /> */}
+              {/* <PrivateRoute path="/form/submit-pr" component={props=> <Submit {...props} values={values} setSubmitted={setSubmitted} push={props.history.push}/>} /> */}
+            </Switch>
+          </FormikForm>
+        </FormContainer>
+      </OuterDiv>
+
     </div>
   );
 }
 
 const WithForm = withFormik({
-  mapPropsToValues({ senderName, senderPhone, recipientName, recipientPhone }) {
+  mapPropsToValues({ senderName, senderPhone, recipientName, recipientPhone, sendMessage }) {
     return {
       senderName: senderName || '',
       senderPhone: senderPhone || '',
@@ -70,22 +124,13 @@ const WithForm = withFormik({
   //======END VALIDATION SCHEMA==========
 
   handleSubmit(values, { props, setSubmitted, resetForm, setSubmitting }) {
-    console.log(props);
+    
     values.senderPhone = '+1' + values.senderPhone;
     values.recipientPhone = '+1' + values.recipientPhone;
-    axios
-      .post('https://reqres.in/api/users', values)
-      .then(res => {
-        console.log(res);
-        resetForm();
-        setSubmitting(false);
-        props.history.push('/');
-      })
-      .catch(err => {
-        console.log(err);
-        setSubmitting(false);
-      });
-    }
+
+    props.sendMessage(values);
+
+  }
 })(Form);
 
-export default WithForm;
+export default connect(null, {sendMessage})(WithForm);

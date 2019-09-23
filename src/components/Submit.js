@@ -1,5 +1,12 @@
 import React from 'react';
+import { Button } from 'reactstrap';
+import styled from 'styled-components';
 
+const StyledButton = styled(Button) `
+    && {
+        background-color: IndianRed;
+    }
+`
 
 function Submit(props) {
     return (
@@ -11,7 +18,7 @@ function Submit(props) {
                 <p>Recipient name: {props.values.recipientName}</p>
                 <p>Recipient phone: {props.values.recipientPhone}</p>
             </div>
-            <button onClick={() => props.setSubmitted(true)} type='submit'>Submit</button>
+            <StyledButton onClick={() => props.setSubmitted(true)} type='submit'>Submit</StyledButton>
         </div>
     );
     
