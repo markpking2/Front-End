@@ -2,20 +2,35 @@ import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import ToolPage from './components/ToolPage';
 import Form from './components/Form';
+import LoginForm from './components/LoginForm'
+import styled from 'styled-components';
 import './App.css';
+import PrivateRoute from './components/PrivateRoute';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+const OuterDiv = styled.div `
+  background: linear-gradient(180deg, rgba(42,72,78,1) 0%, rgba(55,115,117,1) 33%, rgba(168,216,205,1) 66%, rgba(221,239,227,1) 100%);
+  text-align: center;
+  height: 100vh;
+`
 
 function App() {
   return (
-    <div className="App">
+    <OuterDiv>
       <header className='App-header'>
-        <Link style={{'padding': '0 1rem'}} to='/'>Home</Link>
-        <Link style={{'padding': '0 1rem'}} to='/form'>Our Tool</Link>
+        <Header/>
         <Switch>
           <Route exact path='/' component={ToolPage}/>
           <Route path='/form' component={Form}/>
+          {/* <PrivateRoute path="/form-pr" component={props=> <Form {...props} />} /> */}
         </Switch>
+        <Route path ='/login' component={LoginForm} />
+        
+        {/* <LoginForm /> */}
+        <Footer/>
       </header>
-    </div>
+    </OuterDiv>
   );
 }
 

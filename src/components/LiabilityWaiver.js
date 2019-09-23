@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 import styled from 'styled-components';
 
 const Waiver = styled.div `
@@ -7,6 +8,10 @@ const Waiver = styled.div `
     height: 500px;
     width: 80%;
     overflow: scroll;
+`
+
+const StyledButton = styled(Button) `
+    background-color: IndianRed;
 `
 
 function LiabilityWaiver() {
@@ -136,7 +141,7 @@ function LiabilityWaiver() {
                 <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
             </Waiver>
             <p>You understand that by clicking on the "I Accept & Continue" button below, you are agreeing to Empowered Conversation's Terms and Conditions of using this tool.</p>
-            <Link to='/form/submit'>I Accept & Continue</Link>
+            <Link to='/form/submit'><StyledButton>I Accept & Continue</StyledButton></Link>
         </div>
     );
 }
