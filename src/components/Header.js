@@ -44,7 +44,7 @@ const StyledButton = styled(Button) `
 function Header(props){
 
     const handleLogIn = () =>{
-        props.loginTest();
+        // props.loginTest();
         // return <Redirect to='/login' />;
     }
     
@@ -69,7 +69,7 @@ function Header(props){
                     <StyledButton>Subscribe</StyledButton>
                 </form> */}
                 {props.isLoggedIn && <a href='#' onClick={()=>handleLogOut()}>Log Out</a>}
-                {!props.isLoggedIn && <a href='#' onClick={()=>handleLogIn()}>Log In</a>}
+                {!props.isLoggedIn && <a href='/login' onClick={()=>handleLogIn()}>Log In</a>}
             </NavDiv>
         </OuterDiv>
     );

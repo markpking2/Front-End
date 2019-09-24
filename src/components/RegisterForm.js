@@ -3,14 +3,16 @@ import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import {axiosWithAuth} from './AxiosAuth';
 import {connect} from 'react-redux';
-import {loginFunction, loginTest} from '../actions';
+import {registerFunction, loginTest} from '../actions';
 
 
-const OnBoardForm = ({errors, touched, values, status, history, loginTest}) => {
+const RegisterForm = ({errors, touched, values, status, history, loginTest}) => {
 
     useEffect(()=>{
         const token = localStorage.getItem('ec-token');
+
         if(token){
+
             axiosWithAuth()
             .get('/restricted')
             .then(res=>{
@@ -20,14 +22,15 @@ const OnBoardForm = ({errors, touched, values, status, history, loginTest}) => {
             })
             .catch(err=>{
                 localStorage.setItem('ec-token', "");
-                //false token, reset and continue with login
+                // console.log('error');
+                //false token, reset and continue with register
             })
         }
     },[])
 
     return(
         <div>
-            <h1>Login Form</h1>
+            <h1>Register Form</h1>
             <Form>
                 <Field name='username' type='text' placeholder='What is your username?' />
                 {touched.username && errors.username && (<p>{errors.username}</p>)}
@@ -35,15 +38,16 @@ const OnBoardForm = ({errors, touched, values, status, history, loginTest}) => {
                 <Field name='password' type='text' placeholder='What is your password?' />
                 {touched.password && errors.password && (<p>{errors.password}</p>)}
                 
-                <button type='submit'>Login</button>
+                <button type='submit'>Register</button>
             </Form>
 
         </div>
     );
 };
 
-const FormikOnBoardForm = withFormik({
-    mapPropsToValues({ username, password }) {
+const FormikRegisterForm = withFormik({
+    mapPropsToValues({ username, password }){
+        // console.log(props);
         return{
             username: username || '',
             password: password || ''
@@ -58,10 +62,10 @@ const FormikOnBoardForm = withFormik({
     }),
 
     handleSubmit(values, { setUsers, ...props }){
-        console.log('handle');
-        props.props.loginFunction(values, props.props.history);
+        // console.log(props);
+        props.props.registerFunction(values, props.props.history);
     }
 
-})(OnBoardForm);
+})(RegisterForm);
 
-export default connect(null, {loginFunction, loginTest})(FormikOnBoardForm);
+export default connect(null, {registerFunction, loginTest})(FormikRegisterForm);
