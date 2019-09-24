@@ -42,18 +42,11 @@ const StyledButton = styled(Button) `
 
 
 function Header(props){
-
-    const handleLogIn = () =>{
-        // props.loginTest();
-        // return <Redirect to='/login' />;
-    }
     
     const handleLogOut = () =>{
         props.logoutFunction();
         localStorage.setItem("ec-token", "");
-        //set isLoggedIn to false
     }
-    // console.log(props);
     return (
         <OuterDiv>
             <Logo src={require('../img/EmpoweredConversationLogo.png')} alt='Empowered Conversation logo'/>
@@ -63,11 +56,6 @@ function Header(props){
                 <StyledLink to='/form'>Tool</StyledLink>
                 <a href='#'>How It Works</a>
                 <a href='#'>About</a>
-                {/* <a href='#'>Blog</a> */}
-                {/* <form>
-                    <input type='text' name='email' placeholder='Enter your email'/>
-                    <StyledButton>Subscribe</StyledButton>
-                </form> */}
                 {props.isLoggedIn && <a href='/' onClick={()=>handleLogOut()}>Log Out</a>}
                 {!props.isLoggedIn && <a href='/login'>Log In</a>}
             </NavDiv>

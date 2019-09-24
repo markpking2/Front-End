@@ -9,7 +9,6 @@ import Submit from './Submit';
 import {connect} from 'react-redux';
 import {sendMessage, loginTest} from '../actions';
 import styled from 'styled-components';
-import PrivateRoute from './PrivateRoute';
 import {axiosWithAuth} from './AxiosAuth';
 
 const OuterDiv = styled.div `
@@ -84,11 +83,7 @@ function Form(props) {
               />} />
                 
               <Route path='/form/waiver' component={LiabilityWaiver} />
-              
               <Route path ='/form/submit' render={(props) => <Submit values={values} setSubmitted={setSubmitted} push={props.history.push}/>} />
-              {/* <PrivateRoute path="/form/namephone-pr" component={props=> <NamePhone {...props} values={values} touched={touched} errors={errors} />} />*/}
-              {/* <PrivateRoute path="/form/waiver-pr" component={props=> <LiabilityWaiver {...props} />} /> */}
-              {/* <PrivateRoute path="/form/submit-pr" component={props=> <Submit {...props} values={values} setSubmitted={setSubmitted} push={props.history.push}/>} /> */}
             </Switch>
           </FormikForm>
         </FormContainer>

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import {axiosWithAuth} from './AxiosAuth';
 import {connect} from 'react-redux';
 import {loginFunction, loginTest} from '../actions';
-
 
 const OnBoardForm = ({errors, touched, values, status, history, loginTest}) => {
 
