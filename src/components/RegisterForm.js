@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import {axiosWithAuth} from './AxiosAuth';
 import {connect} from 'react-redux';
 import {registerFunction, loginTest} from '../actions';
-
 
 const RegisterForm = ({errors, touched, values, status, history, loginTest}) => {
 
@@ -22,7 +21,6 @@ const RegisterForm = ({errors, touched, values, status, history, loginTest}) => 
             })
             .catch(err=>{
                 localStorage.setItem('ec-token', "");
-                // console.log('error');
                 //false token, reset and continue with register
             })
         }
@@ -40,6 +38,8 @@ const RegisterForm = ({errors, touched, values, status, history, loginTest}) => 
                 
                 <button type='submit'>Register</button>
             </Form>
+            <br />
+            <p>Already have an account? Click <a href="/login">here</a> to log in</p>
 
         </div>
     );
@@ -47,7 +47,6 @@ const RegisterForm = ({errors, touched, values, status, history, loginTest}) => 
 
 const FormikRegisterForm = withFormik({
     mapPropsToValues({ username, password }){
-        // console.log(props);
         return{
             username: username || '',
             password: password || ''
@@ -62,7 +61,6 @@ const FormikRegisterForm = withFormik({
     }),
 
     handleSubmit(values, { setUsers, ...props }){
-        // console.log(props);
         props.props.registerFunction(values, props.props.history);
     }
 
