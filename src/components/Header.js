@@ -13,9 +13,14 @@ const OuterDiv = styled.div `
     display: flex;
     justify-content: space-between;
     padding: 2rem;
+
+    @media screen and (max-width: 550px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `
 const NavDiv = styled.div `
-    width: 50%;
+    width: 70%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -24,6 +29,24 @@ const NavDiv = styled.div `
         text-decoration: none;
         color: white;
         font-family: 'Open Sans', sans-serif;
+    }
+
+    > a:hover {
+        color: #24B4A5;
+        text-decoration: none;
+    }
+
+    @media screen and (max-width: 700px) {
+        width: 80%;
+    }
+
+    @media screen and (max-width: 550px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 500px) {
+        flex-direction: column;
+        align-items: center;
     }
 `
 
@@ -51,12 +74,12 @@ function Header(props){
             <Logo src={require('../img/EmpoweredConversationLogo.png')} alt='Empowered Conversation logo'/>
             
             <NavDiv>
-                <StyledLink to='/'>Home</StyledLink>
-                <StyledLink to='/form'>Tool</StyledLink>
+                <a href='https://ecbuild.netlify.com/'>Home</a>
                 <a href='#'>How It Works</a>
                 <a href='#'>About</a>
-                {props.isLoggedIn && <a href='/' onClick={()=>handleLogOut()}>Log Out</a>}
-                {!props.isLoggedIn && <a href='/login'>Log In</a>}
+                <StyledLink to='/form'>Begin Conversation</StyledLink>
+                {props.isLoggedIn && <StyledLink to ='/' onClick={()=>handleLogOut()}>Log Out</StyledLink>}
+                {!props.isLoggedIn && <StyledLink to='/login'>Log In</StyledLink>}
             </NavDiv>
         </OuterDiv>
     );

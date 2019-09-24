@@ -10,36 +10,23 @@ import {connect} from 'react-redux';
 import {sendMessage, loginTest} from '../actions';
 import styled from 'styled-components';
 import {axiosWithAuth} from './AxiosAuth';
+import Modal from './Modal';
 
 const OuterDiv = styled.div `
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 2rem;
+    width: 100%;
 `
 
-const FormContainer = styled.div `
-  flex-direction: row;
-  justify-content: center;
-  padding: 2rem 4rem;
-  margin: 0 0 0 25%;
-  width: 45%;
-  @media screen and (max-width: 800px) {
-    width: 50%;
+const Video = styled.iframe `
+  width: 500px;
+
+  @media screen and (max-width: 500px) {
+        width: 90%;
   }
-
-  @media screen and (max-width: 600px) {
-    margin: 0 auto;
-    width: 80%;
-  }
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 0px;
-
 `
 
-const FormHeading = styled.h1 `
-  color: black;
-  font-weight: regular;
-`
 
 function Form(props) {
 
@@ -72,13 +59,15 @@ function Form(props) {
   
   return (
     <div>
-      <OuterDiv>
-        <FormContainer>
+      <h2>Please watch this before filling out the form below</h2>
+            <Video src="https://player.vimeo.com/video/359791603?title=0&byline=0&portrait=0&playsinline=0&autopause=0&app_id=122963" width="426" height="240" frameborder="0" allow="autoplay; fullscreen" allowfullscreen="" title="Responder Video Preview" data-ready="true"/>
+      <div>
+        <div>
           <FormikForm>
-            <FormHeading>Big Title</FormHeading>
             <Switch>
               <Redirect from='/form' exact to='/form/namephone' />
-              <Route path='/form/namephone' render={(props) => <NamePhone {...props} values={values} touched={touched}
+              {/* actual path = 'form/namephone' */}
+              <Route path='/' render={(props) => <NamePhone {...props} values={values} touched={touched}
                 errors={errors}
               />} />
                 
@@ -86,8 +75,8 @@ function Form(props) {
               <Route path ='/form/submit' render={(props) => <Submit values={values} setSubmitted={setSubmitted} push={props.history.push}/>} />
             </Switch>
           </FormikForm>
-        </FormContainer>
-      </OuterDiv>
+        </div>
+      </div>
 
     </div>
   );

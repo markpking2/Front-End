@@ -3,11 +3,61 @@ import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import {axiosWithAuth} from './AxiosAuth';
 import {connect} from 'react-redux';
-import {loginFunction, loginTest} from '../actions';
+import {loginFunction, loginTest, activateLoginModal, deactivateLoginModal} from '../actions';
+import { Link } from 'react-router-dom';
+import ModalComponent from './Modal';
+import { Button } from 'reactstrap';
+import styled from 'styled-components';
 
-const OnBoardForm = ({errors, touched, values, status, history, loginTest}) => {
+const StyledButton = styled(Button) `
+    margin-top: 20px;
+
+    && {
+        background: #24B4A5;
+        border-color: white !important;
+        max-width: 100px;
+    }
+
+    &:hover {
+        background: white !important;
+        color: #24B4A5 !important;
+        border-color: #24B4A5 !important;
+    }
+`
+
+const NewField = styled(Field)`
+    width: 100%;
+    height: 35px;
+    border: 1px solid rgba(168, 216, 205, 1);
+    background-color: white;
+    margin-bottom: 20px;
+    color: rgb(42, 72, 78, 1);
+    border-radius: 0px;
+    textAlign: left;
+    padding-left: 20px
+`
+
+const StyledForm = styled(Form) `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 0px;
+    padding: 2rem 4rem;
+    margin: 0 auto;
+    width: 45%;
+`
+const FormHeading = styled.h1 `
+    color: rgba(42, 72, 78, 1);
+    text-align: left;
+    margin-bottom: 20px;
+    width: 100%;
+`
+
+const LoginForm = ({errors, touched, values, status, history, loginTest, loginModal, activateLoginModal, deactivateLoginModal}) => {
 
     useEffect(()=>{
+        
         const token = localStorage.getItem('ec-token');
         if(token){
             axiosWithAuth()
@@ -24,26 +74,34 @@ const OnBoardForm = ({errors, touched, values, status, history, loginTest}) => {
         }
     },[])
 
+    const handleTest = () =>{
+        console.log('test button');
+        activateLoginModal();
+    }
+
     return(
         <div>
-            <h1>Login Form</h1>
-            <Form>
-                <Field name='username' type='text' placeholder='What is your username?' />
+            <StyledForm>
+                <FormHeading>Login Form</FormHeading>
+                <NewField name='username' type='text' placeholder='What is your username?' />
                 {touched.username && errors.username && (<p>{errors.username}</p>)}
                 
-                <Field name='password' type='text' placeholder='What is your password?' />
+                <NewField name='password' type='password' placeholder='What is your password?' />
                 {touched.password && errors.password && (<p>{errors.password}</p>)}
                 
-                <button type='submit'>Login</button>
-            </Form>
-            <br />
-            <p>Don't have an account already? Click <a href="/register">here</a> to register</p>
+                <span 
+                    style={{'color': 'rgba(42, 72, 78, 1)', 'textAlign' : 'left'}}>Don't already have an account? Click <Link style={{'color': '#24B4A5', 'textDecoration' : 'none'}}to="/register">here</Link> to register.</span>
+
+                <StyledButton type='submit'>Login</StyledButton>
+            </StyledForm>
+            {loginModal && <ModalComponent message="You have been logged in!!!" title="Login successful" history={history} endPath='/form' deactivate={deactivateLoginModal} />}
+
 
         </div>
     );
 };
 
-const FormikOnBoardForm = withFormik({
+const FormikLoginForm = withFormik({
     mapPropsToValues({ username, password }) {
         return{
             username: username || '',
@@ -52,7 +110,6 @@ const FormikOnBoardForm = withFormik({
     }, 
 
     validationSchema: Yup.object().shape({
-
         username: Yup.string().required('A username is required'),
         password: Yup.string().required('A password is required'),
 
@@ -62,6 +119,13 @@ const FormikOnBoardForm = withFormik({
         props.props.loginFunction(values, props.props.history);
     }
 
-})(OnBoardForm);
+})(LoginForm);
 
-export default connect(null, {loginFunction, loginTest})(FormikOnBoardForm);
+const mapStateToProps = state =>{
+    return {
+        loginModal: state.loginModal
+    }
+
+}
+
+export default connect(mapStateToProps, {loginFunction, loginTest, activateLoginModal, deactivateLoginModal})(FormikLoginForm);

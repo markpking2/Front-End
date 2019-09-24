@@ -6,10 +6,10 @@
 /* Had trouble using hex values w/ styled components, here are rgba values:
 
 Green 4 (darkest)
-  rgb(42, 72, 78, 1)
+  rgba(42, 72, 78, 1)
 
 Green 3
-  rgb(55, 115, 117, 1)
+  rgba(55, 115, 117, 1)
 
 Green 2
   rgba(168, 216, 205, 1)
@@ -38,7 +38,7 @@ time, mark, audio, video {
   font-size: 100%;
   font-family: 'Open Sans', sans-serif; 
 	font: inherit;
-	vertical-align: baseline;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -47,17 +47,15 @@ footer, header, hgroup, menu, nav, section {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: white;
   font-family: 'DM Serif Text', serif;
+  color:white;
 }
 
 p {
   font-family: 'Open Sans', sans-serif;
-  line-height: 1.4;
-  
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
 ol, ul {
 	list-style: none;
@@ -87,3 +85,6 @@ table {
   color: #09d3ac;
 }
 
+#login-modal h5.modal-title {
+  color: black;
+}

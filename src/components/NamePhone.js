@@ -5,19 +5,63 @@ import { Button } from 'reactstrap';
 import styled from 'styled-components';
 
 const StyledButton = styled(Button) `
+  margin-top: 20px;
+
     && {
-        background-color: IndianRed;
+        background-color: #24B4A5;
+        border-color: white !important;
+    }
+
+    &:hover {
+        background: white !important;
+        color: #24B4A5 !important;
+        border-color: #24B4A5 !important;
     }
 `
 const NewField = styled(Field)`
   width: 100%;
   height: 35px;
-  border: 1px solid red;
+  border: 1px solid rgba(168, 216, 205, 1);
   background-color: white;
   margin-bottom: 20px;
-  color: "#2A484E";
+  color: rgb(42, 72, 78, 1);
+  border-radius: 0px;
+  text-align: left;
+  padding-left: 20px
+`
+
+const FormContainer = styled.div `
+  flex-direction: row;
+  justify-content: center;
+  padding: 2rem 4rem;
+  margin: 2rem auto;
+  width: 45%;
+  @media screen and (max-width: 800px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 600px) {
+    margin: 0 auto;
+    width: 80%;
+  }
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 0px;
 
+`
+
+const FormHeadingContainer = styled.div `
+  display: flex;
+  flex-direction: column;
+`
+
+const FormHeading = styled.h1 `
+  color: rgb(42, 72, 78, 1);
+  text-align: left;
+`
+
+const FormParagraph = styled.p`
+  color: rgb(42, 72, 78, 1);
+  text-align: left;
 `
 
 function NamePhone(props) {
@@ -39,14 +83,17 @@ function NamePhone(props) {
     
 
     return (
-        <div>
-      
+        <FormContainer>
+            <FormHeadingContainer>
+                <FormHeading>Start a Conversation</FormHeading>
+                <FormParagraph>Take a deep breath... </FormParagraph>
+            </FormHeadingContainer>
         <div>
           {touched.senderName && errors.senderName && <p>{errors.senderName}</p>}
           <NewField 
             type="text" 
             name="senderName" 
-            placeholder="Sender's name" 
+            placeholder="Your name" 
           />
         </div>
         <div>
@@ -54,7 +101,7 @@ function NamePhone(props) {
           <NewField 
             type="text" 
             name="senderPhone" 
-            placeholder="Sender's phone" 
+            placeholder="Your phone" 
           />
         </div>
         <div>
@@ -83,7 +130,7 @@ function NamePhone(props) {
                 e.preventDefault();
                 setError(true);
             }}}><StyledButton>Continue</StyledButton></Link>
-      </div>
+      </FormContainer>
     );
 }
 
