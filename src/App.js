@@ -27,10 +27,10 @@ function App() {
           <Route path='/success' component={SuccessPage}/>
           {/* <Route path='/form' component={Form}/> */}
           <PrivateRoute path="/form" component={props=> <Form {...props} />} />
-          <PrivateRoute path="/login" component={props=> <LoginForm {...props} />} />
+          
         </Switch>
-        {/* <Route path ='/login' component={LoginForm} /> */}
-        <PrivateRoute path ='/register' component={RegisterForm} />
+        <Route path ='/login' component={LoginForm} />
+        <Route path ='/register' component={RegisterForm} />
         {/* <Route path ='/login' component={LoginForm} /> */}
         
         {/* <LoginForm /> */}

@@ -50,7 +50,7 @@ function Header(props){
     
     const handleLogOut = () =>{
         props.logoutFunction();
-        // localStorage.setItem("ec-token", null);
+        localStorage.setItem("ec-token", "");
         //set isLoggedIn to false
     }
     // console.log(props);
@@ -68,8 +68,8 @@ function Header(props){
                     <input type='text' name='email' placeholder='Enter your email'/>
                     <StyledButton>Subscribe</StyledButton>
                 </form> */}
-                {props.isLoggedIn && <a href='#' onClick={()=>handleLogOut()}>Log Out</a>}
-                {!props.isLoggedIn && <a href='/login' onClick={()=>handleLogIn()}>Log In</a>}
+                {props.isLoggedIn && <a href='/' onClick={()=>handleLogOut()}>Log Out</a>}
+                {!props.isLoggedIn && <a href='/login'>Log In</a>}
             </NavDiv>
         </OuterDiv>
     );
