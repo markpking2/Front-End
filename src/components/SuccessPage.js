@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const OuterContainer = styled.div `
-    width: 80%;
-    margin: 0 auto;
-    color: white;
-`
+// const OuterContainer = styled.div `
+//     width: 80%;
+//     margin: 0 auto;
+//     color: white;
+// `
 
 
 const SuccessPage = (props) => {
     return (
-        <OuterContainer>
+        <div className="success-container">
             <h2>Congratulations on taking the first step!</h2>
             <p>Your friend has recieved a message about your situation. Your name was not mentioned.</p>
             <p>When they finish their module you will get a text back saying they have completed it and are ready to talk.</p>
@@ -20,7 +20,7 @@ const SuccessPage = (props) => {
             <p>1: Your friend never opened the link we sent them</p>
             <p>2: Your friend watched the video, but never completed the form saying they were done.</p>
             <p>You are more than welcome to still have this conversation with that friend, it just means they may not have utilized the tools we provided them with to prepare for the conversation.</p>
-        </OuterContainer>
+        </div>
      );
 }
  

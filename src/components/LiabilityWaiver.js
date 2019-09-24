@@ -72,6 +72,18 @@ const StyledA = styled.a `
     }
 `
 
+const AcceptDiv = styled.div `
+    margin: 0 auto;
+    width: 45%;
+    @media screen and (max-width: 800px) {
+        width: 50%;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 80%;
+    }
+`
+
 function LiabilityWaiver() {
     return (
         <div>
@@ -198,7 +210,9 @@ function LiabilityWaiver() {
 
                 <FormParagraph>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</FormParagraph>
             </LiabilityContainer>
-            <FormParagraph>You understand that by clicking on the "I Accept & Continue" button below, you are agreeing to Empowered Conversation's Terms and Conditions of using this tool.</FormParagraph>
+            <AcceptDiv>
+                <FormParagraph>You understand that by clicking on the "I Accept & Continue" button below, you are agreeing to Empowered Conversation's Terms and Conditions of using this tool.</FormParagraph> 
+            </AcceptDiv>
             <Link to='/form/submit'><StyledButton>I Accept & Continue</StyledButton></Link>
         </div>
     );

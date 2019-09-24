@@ -88,3 +88,9 @@ table {
 #login-modal h5.modal-title {
   color: black;
 }
+
+.success-container {
+  width: 80%;
+    margin: 0 auto;
+    color: white;
+}

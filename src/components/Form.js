@@ -12,12 +12,12 @@ import styled from 'styled-components';
 import {axiosWithAuth} from './AxiosAuth';
 import Modal from './Modal';
 
-const OuterDiv = styled.div `
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-    width: 100%;
-`
+// const OuterDiv = styled.div `
+//     display: flex;
+//     justify-content: center;
+//     padding: 2rem;
+//     width: 100%;
+// `
 
 const Video = styled.iframe `
   width: 500px;
