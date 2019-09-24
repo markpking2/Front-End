@@ -36,6 +36,8 @@ const OnBoardForm = ({errors, touched, values, status, history, loginTest}) => {
                 
                 <button type='submit'>Login</button>
             </Form>
+            <br />
+            <p>Don't have an account already? Click <a href="/register">here</a> to register</p>
 
         </div>
     );
@@ -57,7 +59,6 @@ const FormikOnBoardForm = withFormik({
     }),
 
     handleSubmit(values, { setUsers, ...props }){
-        console.log('handle');
         props.props.loginFunction(values, props.props.history);
     }
 

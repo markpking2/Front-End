@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Button } from 'reactstrap';
 import {connect} from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import {logoutFunction, loginTest} from '../actions';
 
 const Logo = styled.img `
