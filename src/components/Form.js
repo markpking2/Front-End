@@ -19,14 +19,6 @@ import Modal from './Modal';
 //     width: 100%;
 // `
 
-const Video = styled.iframe `
-  width: 500px;
-
-  @media screen and (max-width: 500px) {
-        width: 90%;
-  }
-`
-
 
 function Form(props) {
 
@@ -41,7 +33,7 @@ function Form(props) {
             //token authenticated
         })
         .catch(err=>{
-            localStorage.setItem('ec-token', null);
+            localStorage.setItem('ec-token', "");
             props.history.push('/login');
             //incorrect token, remove token and push back to login page
         })
@@ -58,27 +50,22 @@ function Form(props) {
 
   
   return (
-    <div>
-      <h2>Please watch this before filling out the form below</h2>
-            <Video src="https://player.vimeo.com/video/359791603?title=0&byline=0&portrait=0&playsinline=0&autopause=0&app_id=122963" width="426" height="240" frameborder="0" allow="autoplay; fullscreen" allowfullscreen="" title="Responder Video Preview" data-ready="true"/>
       <div>
-        <div>
+         <div>
           <FormikForm>
             <Switch>
               <Redirect from='/form' exact to='/form/namephone' />
               {/* actual path = 'form/namephone' */}
-              <Route path='/' render={(props) => <NamePhone {...props} values={values} touched={touched}
+              <Route exact path='/form/namephone' render={(props) => <NamePhone {...props} values={values} touched={touched}
                 errors={errors}
               />} />
                 
               <Route path='/form/waiver' component={LiabilityWaiver} />
-              <Route path ='/form/submit' render={(props) => <Submit values={values} setSubmitted={setSubmitted} push={props.history.push}/>} />
+              <Route path ='/form/submit' render={(props) => <Submit values={values} setSubmitted={setSubmitted} history={props.history} push={props.history.push}/>} />
             </Switch>
           </FormikForm>
         </div>
       </div>
-
-    </div>
   );
 }
 

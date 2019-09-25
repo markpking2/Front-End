@@ -6,6 +6,7 @@ function ModalComponent(props) {
     const [modal, setModal ] = useState(true);
 
     const toggle = () => {
+        console.log(props);
         setModal(!modal);
         props.deactivate();
         props.history.push(props.endPath);

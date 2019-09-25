@@ -44,8 +44,20 @@ const StyledForm = styled(Form) `
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 0px;
     padding: 2rem 4rem;
-    margin: 0 auto;
-    width: 45%;
+    margin: 2rem auto;
+    width: 50%;
+
+    @media screen and (max-width: 800px) {
+        width: 60%;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 80%;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 95%;
+    }
 `
 const FormHeading = styled.h1 `
     color: rgba(42, 72, 78, 1);

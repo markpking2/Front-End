@@ -12,11 +12,14 @@ import SuccessPage from './components/SuccessPage';
 import Module from './components/Module';
 import Submit from './components/Submit';
 import LiabilityWaiver from './components/LiabilityWaiver';
+import MyAccount from './components/MyAccount';
 
 const OuterDiv = styled.div `
+  box-sizing: border-box;
   background: linear-gradient(180deg, rgba(42,72,78,1) 0%, rgba(55,115,117,1) 33%, rgba(168,216,205,1) 66%, rgba(221,239,227,1) 100%);
   text-align: center;
   min-height: 96vh;
+  padding: 2rem;
 
   @media screen and (max-width: 800px) {
         min-height: 94vh;
@@ -38,10 +41,10 @@ function App() {
     <OuterDiv>
       <header className='App-header'>
         <Header/>
-        <SuccessPage />
+        {/* <SuccessPage /> */}
         <Switch>
           <Route exact path='/' component={Form}/>
-          <Route path='/success' component={SuccessPage}/>
+          <PrivateRoute path='/success' component={SuccessPage}/>
           {/* Change this to Private Route ^^ */}
           {/* <Route path='/form' component={Form}/> */}
           <PrivateRoute path="/form" component={props=> <Form {...props} />} />
@@ -50,10 +53,11 @@ function App() {
         <Route path ='/login' component={LoginForm} />
         <Route path ='/module' component={Module} />
         <Route path ='/register' component={RegisterForm} />
+        <Route path ='/account' component={MyAccount} />
         {/* <Route path ='/login' component={LoginForm} /> */}
-        <Form />
-        <LiabilityWaiver />
-        <Submit values={values} />
+        {/* <Form /> */}
+        {/* <LiabilityWaiver /> */}
+        {/* <Submit values={values} /> */}
       </header>
     </OuterDiv>
     <Footer/>

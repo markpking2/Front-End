@@ -19,19 +19,24 @@ import {MESSAGE_SUCCESS,
 } from '../reducers';
 
 export const sendMessage = (message, history) =>{
+    message.userID = localStorage.getItem('userID');
+    console.log(message);
     return dispatch =>{
-        dispatch({
-            type: SENDING_DATA
-        });
+        // dispatch({
+        //     type: SENDING_DATA
+        // });
         
         axiosWithAuth()
         .post('/', message)
         .then(res=>{
+            // dispatch({
+            //     type: MESSAGE_SUCCESS
+            // });
             dispatch({
-                type: MESSAGE_SUCCESS
-            });
-            alert(res.data.message);
-            history.push('/success');
+                type: MESSAGE_MODAL_ON
+            })
+            // alert(res.data.message);
+            // history.push('/success');
         })
         .catch(err=>{
             console.log(err.response);
@@ -50,6 +55,9 @@ export const loginFunction = (credentials, history) =>{
         axios
         .post('https://empowered-conversations.herokuapp.com/login', credentials)
         .then(res=>{
+            
+            console.log(res.data.userID);
+            localStorage.setItem("userID", res.data.userID);
             localStorage.setItem("ec-token", res.data.token);
             dispatch({type: LOGIN});
             dispatch({type: LOGIN_MODAL_ON});
@@ -86,8 +94,8 @@ export const registerFunction = (credentials, history) =>{
         axios
         .post('https://empowered-conversations.herokuapp.com/register', credentials)
         .then(res=>{
-            alert("Successful Registration. Please log in");
-            history.push('/login');
+            dispatch({type: REGISTER_MODAL_ON});
+            // history.push('/login');
     // return {
     //     type: LOGIN
     // }
@@ -125,10 +133,10 @@ export const deactivateMessageModal = () =>{
     return {type: MESSAGE_MODAL_OFF};
 }
 
-export const activatemModuleModal = () =>{
+export const activateModuleModal = () =>{
     return {type: MODULE_MODAL_ON};
 }
 
-export const deactivatemModuleModal = () =>{
+export const deactivateModuleModal = () =>{
     return {type: MODULE_MODAL_OFF};
 }

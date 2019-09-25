@@ -58,19 +58,38 @@ const Copyright = styled.div `
     @media screen and (max-width: 500px) {
         flex-direction: column;
     }
+
+    > a {
+        color: white;
+    }
+
+    > a:hover {
+        text-decoration: none;
+        color: #24B4A5;
+    }
+`
+
+const FaIcon = styled(FontAwesomeIcon) `
+    color: white;
+
+    &:hover {
+        color: #24B4A5;
+    }
 `
 
 function Footer() {
     return (
         <FooterContainer>
             <Copyright>
-                <span>© Empowered Conversations 2019.</span>
-                <span>All rights reserved.</span>
+                <a href='https://empoweredconversation.com/'>
+                    <span>© Empowered Conversations 2019.</span>
+                    <span>All rights reserved.</span>
+                </a>
             </Copyright>
             <Links>
-                <a href='https://twitter.com/empoweredconvo/' target='blank'><FontAwesomeIcon color={'white'} icon={faInstagram} /></a>
-                <a href='https://www.facebook.com/empoweredconvo/' target='blank'><FontAwesomeIcon color={'white'} icon={faTwitter} /></a>
-                <a href='https://www.instagram.com/empoweredconvo/' target='blank'><FontAwesomeIcon color={'white'} icon={faFacebook} /></a>
+                <a href='https://twitter.com/empoweredconvo/' target='blank'><FaIcon icon={faInstagram} className='fa-lg'/></a>
+                <a href='https://www.facebook.com/empoweredconvo/' target='blank'><FaIcon icon={faTwitter} className='fa-lg'/></a>
+                <a href='https://www.instagram.com/empoweredconvo/' target='blank'><FaIcon icon={faFacebook} className='fa-lg'/></a>
             </Links>
         </FooterContainer>
     );

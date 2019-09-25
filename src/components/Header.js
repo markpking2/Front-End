@@ -4,9 +4,14 @@ import styled from 'styled-components';
 import { Button } from 'reactstrap';
 import {connect} from 'react-redux';
 import {logoutFunction, loginTest} from '../actions';
+import AccountIcon from './AccountIcon';
 
 const Logo = styled.img `
     width: 100px;
+
+    &:hover {
+        opacity: 0.4;
+    }
 `
 
 const OuterDiv = styled.div `
@@ -14,9 +19,10 @@ const OuterDiv = styled.div `
     justify-content: space-between;
     padding: 2rem;
 
-    @media screen and (max-width: 550px) {
+    @media screen and (max-width: 600px) {
         flex-direction: column;
         align-items: center;
+        padding: 0;
     }
 `
 const NavDiv = styled.div `
@@ -71,15 +77,16 @@ function Header(props){
     }
     return (
         <OuterDiv>
+            <a href='https://ecbuild.netlify.com/'>
             <Logo src={require('../img/EmpoweredConversationLogo.png')} alt='Empowered Conversation logo'/>
+            </a>
             
             <NavDiv>
-                <a href='https://ecbuild.netlify.com/'>Home</a>
-                <a href='#'>How It Works</a>
-                <a href='#'>About</a>
+                <StyledLink to='/'>Home</StyledLink>
+                <a href='https://ecbuild.netlify.com/'>How It Works</a>
+                <a href='https://ecbuild.netlify.com/'>About</a>
                 <StyledLink to='/form'>Begin Conversation</StyledLink>
-                {props.isLoggedIn && <StyledLink to ='/' onClick={()=>handleLogOut()}>Log Out</StyledLink>}
-                {!props.isLoggedIn && <StyledLink to='/login'>Log In</StyledLink>}
+                <AccountIcon handleLogOut={handleLogOut} isLoggedIn={props.isLoggedIn}/>
             </NavDiv>
         </OuterDiv>
     );

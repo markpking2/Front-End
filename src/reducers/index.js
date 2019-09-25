@@ -79,6 +79,7 @@ export const reducer = (state=initialState, action) => {
                 }
 
                 case MESSAGE_MODAL_ON:
+                        console.log('messageModal is now true');
                 return {
                     ...state,
                     messageModal: true
@@ -89,6 +90,7 @@ export const reducer = (state=initialState, action) => {
                     messageModal: false
                 }
                 case MODULE_MODAL_ON:
+                    
                 return {
                     ...state,
                     moduleModal: true

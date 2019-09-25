@@ -16,8 +16,20 @@ const StyledForm = styled(Form) `
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 0px;
     padding: 2rem 4rem;
-    margin: 0 auto;
-    width: 45%;
+    margin: 2rem auto;
+    width: 50%;
+
+    @media screen and (max-width: 800px) {
+        width: 60%;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 80%;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 95%;
+    }
 `
 
 const NewField = styled(Field)`
@@ -91,8 +103,8 @@ const RegisterForm = ({errors, touched, values, status, history, loginTest, regi
                 <NewField name='password' type='password' placeholder='What is your password?' />
                 {touched.password && errors.password && (<Error>{errors.password}</Error>)}
 
-                <NewField name='phoneNumber' type='text' placeholder='What is your phone number?' />
-                {touched.phoneNumber && errors.phoneNumber && (<Error>{errors.phoneNumber}</Error>)}
+                <NewField name='phone' type='text' placeholder='What is your phone number?' />
+                {touched.phone && errors.phone && (<Error>{errors.phone}</Error>)}
                 
                 <span style={{'color': 'rgba(42, 72, 78, 1)', 'textAlign' : 'left'}}>Already have an account? Click <Link style={{'color': '#24B4A5', 'textDecoration' : 'none'}}to="/login">here</Link> to log in</span>
                 
@@ -107,11 +119,11 @@ const RegisterForm = ({errors, touched, values, status, history, loginTest, regi
 };
 
 const FormikRegisterForm = withFormik({
-    mapPropsToValues({ username, password, phoneNumber }){
+    mapPropsToValues({ username, password, phone }){
         return{
             username: username || '',
             password: password || '',
-            phoneNumber: phoneNumber || ''
+            phone: phone || ''
         };
     }, 
 
@@ -119,7 +131,7 @@ const FormikRegisterForm = withFormik({
 
         username: Yup.string().required('A username is required'),
         password: Yup.string().required('A password is required'),
-        phoneNumber: Yup.string()
+        phone: Yup.string()
             .matches(/\d{10}/, 'Enter 10 digit phone number without any symbols')
             .max(10, 'Enter 10 digit phone number without any symbols')
             .required('A phone number is required')
@@ -128,7 +140,7 @@ const FormikRegisterForm = withFormik({
     }),
 
     handleSubmit(values, { setUsers, ...props }){
-        values.phoneNumber = '+1' + values.senderPhone;
+        values.phone = '+1' + values.phone;
         props.props.registerFunction(values, props.props.history);
     }
 

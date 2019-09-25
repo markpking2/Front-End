@@ -29,20 +29,40 @@ const NewField = styled(Field)`
   text-align: left;
   padding-left: 20px
 `
+const Video = styled.iframe `
+  margin: 2rem auto;
+  border: 0;
+  width: 50%;
+  @media screen and (max-width: 800px) {
+    width: 60%;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 80%;
+  }
+
+  @media screen and (max-width: 500px) {
+        width: 95%;
+  }
+`
 
 const FormContainer = styled.div `
   flex-direction: row;
   justify-content: center;
   padding: 2rem 4rem;
   margin: 2rem auto;
-  width: 45%;
+  width: 50%;
   @media screen and (max-width: 800px) {
-    width: 50%;
+    width: 60%;
   }
 
   @media screen and (max-width: 600px) {
     margin: 0 auto;
     width: 80%;
+  }
+
+  @media screen and (max-width: 500px) {
+        width: 95%;
   }
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 0px;
@@ -83,6 +103,9 @@ function NamePhone(props) {
     
 
     return (
+      <div>
+        <h2>Please watch this video before filling out the form below</h2>
+        <Video width="560" height="315" src="https://www.youtube.com/embed/vOa2pj5jdmo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></Video>
         <FormContainer>
             <FormHeadingContainer>
                 <FormHeading>Start a Conversation</FormHeading>
@@ -131,6 +154,7 @@ function NamePhone(props) {
                 setError(true);
             }}}><StyledButton>Continue</StyledButton></Link>
       </FormContainer>
+      </div>
     );
 }
 
