@@ -28,6 +28,7 @@ const Empowered = styled.div`
   white-space: nowrap;
   padding: 0;
   opacity: 1;
+  height: 100px;
 `;
 
 const Conversation = styled.span`
@@ -40,6 +41,7 @@ const ConversationDiv = styled.div`
   overflow: hidden;
   white-space: nowrap;
   width: 0px;
+  height: 100px;
 `;
 
 const StyledDiv = styled.div`
