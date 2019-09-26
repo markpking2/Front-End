@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
 const StyledLink = styled(Link)`
+    font-size: 1.1rem;
   text-decoration: none;
   color: white;
 
@@ -44,7 +45,7 @@ function AccountIcon(props) {
       classNames="fade"
       unmountOnExit
     >
-      <div style={{ minWidth: "100px", "min-height": "75px" }}>
+      <div style={{'min-width': '100px'}}>
         {accountIcon && (
           <FaIcon
             onClick={() => setAccountIcon(false)}
@@ -62,16 +63,13 @@ function AccountIcon(props) {
               />
             )}
           </XDiv>
-          {!accountIcon && props.isLoggedIn && (
+          {!accountIcon && (
             <StyledLink to="/login" onClick={() => props.handleLogOut()}>
               Log Out
             </StyledLink>
           )}
-          {!accountIcon && props.isLoggedIn && (
+          {!accountIcon && (
             <StyledLink to="/account">My Account</StyledLink>
-          )}
-          {!accountIcon && !props.isLoggedIn && (
-            <StyledLink to="/login">Log In</StyledLink>
           )}
         </StyledDiv>
       </div>

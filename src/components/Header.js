@@ -20,6 +20,7 @@ const OuterDiv = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 2rem 2rem 2rem;
+  min-height: 120px;
 
   @media screen and (max-width: 600px) {
     flex-direction: column;
@@ -28,15 +29,17 @@ const OuterDiv = styled.div`
   }
 `;
 const NavDiv = styled.div`
-  width: 50%;
+  width: 55%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  align-content: center;
   text-decoration: none;
   > a {
     text-decoration: none;
     color: white;
     font-family: "Open Sans", sans-serif;
+    font-size: 1.1rem;
   }
 
   > a:hover {
@@ -44,25 +47,26 @@ const NavDiv = styled.div`
     text-decoration: none;
   }
 
-  @media screen and (max-width: 900px) {
-    width: 70%;
+  @media screen and (max-width: 950px) {
+    width: 75%;
   }
 
-  @media screen and (max-width: 700px) {
-    width: 80%;
+  @media screen and (max-width: 750px) {
+    width: 85%;
   }
 
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 600px) {
     width: 100%;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 550px) {
     flex-direction: column;
     align-items: center;
   }
 `;
 
 const StyledLink = styled(Link)`
+  font-size: 1.1rem;
   text-decoration: none;
   color: white;
 `;
@@ -100,11 +104,10 @@ function Header(props) {
           <a href="https://ecbuild.netlify.com/">About</a>
           <StyledLink to="/form">Begin Conversation</StyledLink>
           <StyledLink to="/module">Module</StyledLink>
-
-          <AccountIcon
+          {!props.isLoggedIn && <StyledLink to="/login">Log In</StyledLink>}
+          {props.isLoggedIn && <AccountIcon
             handleLogOut={handleLogOut}
-            isLoggedIn={props.isLoggedIn}
-          />
+          />}
         </NavDiv>
       </OuterDiv>
     </CSSTransition>
