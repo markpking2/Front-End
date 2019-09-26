@@ -8,38 +8,8 @@ import NamePhone from './NamePhone';
 import Submit from './Submit';
 import {connect} from 'react-redux';
 import {sendMessage, loginTest} from '../actions';
-import styled from 'styled-components';
 import {axiosWithAuth} from './AxiosAuth';
-
-const OuterDiv = styled.div `
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem;
-`
-
-const FormContainer = styled.div `
-  flex-direction: row;
-  justify-content: center;
-  padding: 2rem 4rem;
-  margin: 0 0 0 25%;
-  width: 45%;
-  @media screen and (max-width: 800px) {
-    width: 50%;
-  }
-
-  @media screen and (max-width: 600px) {
-    margin: 0 auto;
-    width: 80%;
-  }
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 0px;
-
-`
-
-const FormHeading = styled.h1 `
-  color: black;
-  font-weight: regular;
-`
+import { CSSTransition } from "react-transition-group";
 
 function Form(props) {
 
@@ -54,7 +24,7 @@ function Form(props) {
             //token authenticated
         })
         .catch(err=>{
-            localStorage.setItem('ec-token', null);
+            localStorage.setItem('ec-token', "");
             props.history.push('/login');
             //incorrect token, remove token and push back to login page
         })
@@ -71,33 +41,39 @@ function Form(props) {
 
   
   return (
-    <div>
-      <OuterDiv>
-        <FormContainer>
+    <CSSTransition
+        in={true}
+        appear={true}
+        timeout={5000}
+        classNames="fade"
+        unmountOnExit
+      >
+      <div>
+         <div>
           <FormikForm>
-            <FormHeading>Big Title</FormHeading>
             <Switch>
               <Redirect from='/form' exact to='/form/namephone' />
-              <Route path='/form/namephone' render={(props) => <NamePhone {...props} values={values} touched={touched}
+              {/* actual path = 'form/namephone' */}
+              <Route exact path='/form/namephone' render={(props) => <NamePhone {...props} values={values} touched={touched}
                 errors={errors}
               />} />
                 
               <Route path='/form/waiver' component={LiabilityWaiver} />
-              <Route path ='/form/submit' render={(props) => <Submit values={values} setSubmitted={setSubmitted} push={props.history.push}/>} />
+              <Route path ='/form/submit' render={(props) => <Submit values={values} setSubmitted={setSubmitted} history={props.history} push={props.history.push}/>} />
             </Switch>
           </FormikForm>
-        </FormContainer>
-      </OuterDiv>
-
-    </div>
+        </div>
+      </div>
+      </CSSTransition>
   );
 }
 
 const WithForm = withFormik({
-  mapPropsToValues({ senderName, senderPhone, recipientName, recipientPhone, sendMessage }) {
+  mapPropsToValues({ recipientName, recipientPhone, sendMessage }) {
+    // senderName, senderPhone, 
     return {
-      senderName: senderName || '',
-      senderPhone: senderPhone || '',
+      // senderName: senderName || '',
+      // senderPhone: senderPhone || '',
       recipientName: recipientName || '',
       recipientPhone: recipientPhone || ''
     };
@@ -105,12 +81,12 @@ const WithForm = withFormik({
 
   //======VALIDATION SCHEMA==========
   validationSchema: Yup.object().shape({
-    senderName: Yup.string()
-      .required("Sender name is required"),
-    senderPhone: Yup.string()
-      .matches(/\d{10}/, 'Enter 10 digit phone number without any symbols')
-      .max(10, 'Enter 10 digit phone number without any symbols')
-      .required("Sender's phone is required"),
+    // senderName: Yup.string()
+    //   .required("Sender name is required"),
+    // senderPhone: Yup.string()
+    //   .matches(/\d{10}/, 'Enter 10 digit phone number without any symbols')
+    //   .max(10, 'Enter 10 digit phone number without any symbols')
+    //   .required("Sender's phone is required"),
     recipientName: Yup.string()
       .required("Recipient's name is required"),
     recipientPhone: Yup.string()
@@ -122,7 +98,7 @@ const WithForm = withFormik({
 
   handleSubmit(values, { props, setSubmitted, resetForm, setSubmitting }) {
     
-    values.senderPhone = '+1' + values.senderPhone;
+    // values.senderPhone = '+1' + values.senderPhone;
     values.recipientPhone = '+1' + values.recipientPhone;
     props.sendMessage(values, props.history);
 

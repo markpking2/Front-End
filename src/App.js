@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
-import ToolPage from './components/ToolPage';
+import { Route, Switch } from 'react-router-dom';
 import Form from './components/Form';
 import LoginForm from './components/LoginForm'
 import styled from 'styled-components';
@@ -10,33 +9,50 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import RegisterForm from './components/RegisterForm';
 import SuccessPage from './components/SuccessPage';
+import Module from './components/Module';
+import MyAccount from './components/MyAccount';
+import Intro from './components/Intro';
+import Test from './components/Test';
 
 const OuterDiv = styled.div `
+  box-sizing: border-box;
   background: linear-gradient(180deg, rgba(42,72,78,1) 0%, rgba(55,115,117,1) 33%, rgba(168,216,205,1) 66%, rgba(221,239,227,1) 100%);
   text-align: center;
-  height: 100vh;
+  min-height: 94vh;
+  padding: 2rem 0;
+
+
+  @media screen and (max-width: 800px) {
+        min-height: 92vh;
+  }
+
+  @media screen and (max-width: 500px) {
+      min-height: 87vh;
+  }
 `
 
 function App() {
   return (
+    <div>
     <OuterDiv>
       <header className='App-header'>
         <Header/>
+
         <Switch>
-          <Route exact path='/' component={ToolPage}/>
-          <Route path='/success' component={SuccessPage}/>
-          {/* <Route path='/form' component={Form}/> */}
+          <Route exact path='/' component={Intro}/>
+          <PrivateRoute path='/success' component={SuccessPage}/>
           <PrivateRoute path="/form" component={props=> <Form {...props} />} />
-          
         </Switch>
+
         <Route path ='/login' component={LoginForm} />
+        <Route path ='/test' component={Test} />
+        <Route path ='/module' component={Module} />
         <Route path ='/register' component={RegisterForm} />
-        {/* <Route path ='/login' component={LoginForm} /> */}
-        
-        {/* <LoginForm /> */}
-        <Footer/>
+        <Route path ='/account' component={MyAccount} />
       </header>
     </OuterDiv>
+    <Footer/>
+    </div>
   );
 }
 
