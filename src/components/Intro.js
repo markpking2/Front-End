@@ -27,6 +27,7 @@ const Empowered = styled.div`
   white-space: nowrap;
   padding: 0;
   opacity: 1;
+  z-index: 1;
 `;
 
 const Conversation = styled.span`
