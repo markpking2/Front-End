@@ -9,12 +9,12 @@ Empowered Conversation aims to re-envision the future of social support. With ou
     yarn start
 
 ## Created by:
-[Christina Delligatta](https://github.com/TinaDelli) - Project Lead
-[Krishan Nattar](https://github.com/Krishan-Nattar) - Front-end
-[Mark King](https://github.com/markpkng) - Front-end
-[Alec Quinn](https://github.com/AlecThomasQuinn) - Front-end
-[Zach Young](https://github.com/zachtyoung) - Back-end
-[Hysen Sisco](https://github.com/hsisco) - UI / UX
+- [Christina Delligatta](https://github.com/TinaDelli) - Project Lead
+- [Krishan Nattar](https://github.com/Krishan-Nattar) - Front-end
+- [Mark King](https://github.com/markpkng) - Front-end
+- [Alec Quinn](https://github.com/AlecThomasQuinn) - Front-end
+- [Zach Young](https://github.com/zachtyoung) - Back-end
+- [Hysen Sisco](https://github.com/hsisco) - UI / UX
 
 
 ## How Our Application Solves the Problem
