@@ -67,4 +67,23 @@ table {
   width: 80%;
     margin: 0 auto;
     color: white;
+
+}
+
+
+.fade-appear{
+  opacity:0;
+  z-index:1;
+  transition: 1000ms ease-out;
+}
+
+.fade-appear-active{
+  opacity:1;
+  transition: 1000ms ease-out;
+}
+
+.fade-appear.fade-appear-active{
+  opacity:1;
+  transition: 1000ms ease-out;
+
 }

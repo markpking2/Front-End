@@ -95,10 +95,7 @@ export const registerFunction = (credentials, history) =>{
         .post('https://empowered-conversations.herokuapp.com/register', credentials)
         .then(res=>{
             dispatch({type: REGISTER_MODAL_ON});
-            // history.push('/login');
-    // return {
-    //     type: LOGIN
-    // }
+
     
         })
         .catch(err=>{

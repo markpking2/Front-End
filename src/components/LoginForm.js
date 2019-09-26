@@ -9,6 +9,9 @@ import ModalComponent from './Modal';
 import { Button } from 'reactstrap';
 import styled from 'styled-components';
 
+import { CSSTransition } from "react-transition-group";
+
+
 const StyledButton = styled(Button) `
     margin-top: 20px;
 
@@ -86,12 +89,16 @@ const LoginForm = ({errors, touched, values, status, history, loginTest, loginMo
         }
     },[])
 
-    const handleTest = () =>{
-        console.log('test button');
-        activateLoginModal();
-    }
+
 
     return(
+                  <CSSTransition
+        in={true}
+        appear={true}
+        timeout={5000}
+        classNames="fade"
+        unmountOnExit
+      >
         <div>
             <StyledForm>
                 <FormHeading>Login Form</FormHeading>
@@ -106,10 +113,12 @@ const LoginForm = ({errors, touched, values, status, history, loginTest, loginMo
 
                 <StyledButton type='submit'>Login</StyledButton>
             </StyledForm>
-            {loginModal && <ModalComponent message="You have been logged in!!!" title="Login successful" history={history} endPath='/form' deactivate={deactivateLoginModal} />}
+
+            {loginModal && <ModalComponent message="You have been logged in!" title="Login successful" history={history} endPath='/form' deactivate={deactivateLoginModal} />}
 
 
         </div>
+            </CSSTransition>
     );
 };
 

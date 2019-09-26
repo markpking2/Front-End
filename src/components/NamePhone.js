@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Field } from "formik";
 import { Button } from 'reactstrap';
 import styled from 'styled-components';
+import { CSSTransition } from "react-transition-group";
 
 const StyledButton = styled(Button) `
   margin-top: 20px;
@@ -25,6 +26,7 @@ const NewField = styled(Field)`
   background-color: white;
   margin-bottom: 20px;
   color: rgb(42, 72, 78, 1);
+
   border-radius: 0px;
   text-align: left;
   padding-left: 20px
@@ -32,6 +34,7 @@ const NewField = styled(Field)`
 const Video = styled.iframe `
   margin: 2rem auto;
   border: 0;
+  border-radius: 0px;
   width: 50%;
   @media screen and (max-width: 800px) {
     width: 60%;
@@ -50,7 +53,7 @@ const FormContainer = styled.div `
   flex-direction: row;
   justify-content: center;
   padding: 2rem 4rem;
-  margin: 2rem auto;
+  margin: 0 auto;
   width: 50%;
   @media screen and (max-width: 800px) {
     width: 60%;
@@ -84,6 +87,21 @@ const FormParagraph = styled.p`
   text-align: left;
 `
 
+const FormHeadingContainer = styled.div `
+  display: flex;
+  flex-direction: column;
+`
+
+const FormHeading = styled.h1 `
+  color: rgb(42, 72, 78, 1);
+  text-align: left;
+`
+
+const FormParagraph = styled.p`
+  color: rgb(42, 72, 78, 1);
+  text-align: left;
+`
+
 function NamePhone(props) {
     const [error, setError] = useState(false);
 
@@ -94,15 +112,28 @@ function NamePhone(props) {
     } = props;
 
     useEffect(() => {
-        if(!(values.senderName.length < 1 || values.senderPhone < 1 || values.recipientPhone < 1 || values.recipientPhone < 1) &&
-        !(errors.senderName || errors.senderPhone || errors.recipientName || errors.recipientPhone)){
+        if(!(values.recipientPhone < 1 || values.recipientPhone < 1) &&
+        // values.senderName.length < 1 || values.senderPhone < 1 || 
+        !(errors.recipientName || errors.recipientPhone)){
+          // errors.senderName || errors.senderPhone || 
             setError(false);
         }
-    }, [error, errors.recipientName, errors.recipientPhone, errors.senderName, errors.senderPhone,
-        values.recipientPhone, values.senderName.length, values.senderPhone]);
+    }, [error, errors.recipientName, errors.recipientPhone, 
+        values.recipientPhone, ]);
+        // errors.senderName, errors.senderPhone,
+        // values.senderName.length, values.senderPhone
     
 
     return (
+
+      <CSSTransition
+        in={true}
+        appear={true}
+        timeout={5000}
+        classNames="fade"
+        unmountOnExit
+      >
+
       <div>
         <h2>Please watch this video before filling out the form below</h2>
         <Video width="560" height="315" src="https://www.youtube.com/embed/vOa2pj5jdmo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></Video>
@@ -111,7 +142,9 @@ function NamePhone(props) {
                 <FormHeading>Start a Conversation</FormHeading>
                 <FormParagraph>Take a deep breath... </FormParagraph>
             </FormHeadingContainer>
+
         <div>
+
           {touched.senderName && errors.senderName && <p>{errors.senderName}</p>}
           <NewField 
             type="text" 
@@ -126,7 +159,7 @@ function NamePhone(props) {
             name="senderPhone" 
             placeholder="Your phone" 
           />
-        </div>
+        </div> */}
         <div>
           {touched.recipientName && errors.recipientName && <p>{errors.recipientName}</p>}
           <NewField 
@@ -148,13 +181,16 @@ function NamePhone(props) {
         </div>
         {error && <p>Please check you have entered in each field and for errors</p>}
         <Link to='/form/waiver' onClick={(e) => {
-            if((values.senderName.length < 1 || values.senderPhone < 1 || values.recipientPhone < 1 || values.recipientPhone < 1) ||
-            (errors.senderName || errors.senderPhone || errors.recipientName || errors.recipientPhone)){
+            if((values.recipientPhone < 1 || values.recipientPhone < 1) ||
+            (errors.recipientName || errors.recipientPhone)){
+              // values.senderName.length < 1 || values.senderPhone < 1 || 
+              // errors.senderName || errors.senderPhone || 
                 e.preventDefault();
                 setError(true);
             }}}><StyledButton>Continue</StyledButton></Link>
       </FormContainer>
       </div>
+      </CSSTransition>
     );
 }
 

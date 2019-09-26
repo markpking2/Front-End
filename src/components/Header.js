@@ -6,6 +6,9 @@ import {connect} from 'react-redux';
 import {logoutFunction, loginTest} from '../actions';
 import AccountIcon from './AccountIcon';
 
+import { CSSTransition } from "react-transition-group";
+
+
 const Logo = styled.img `
     width: 100px;
 
@@ -76,6 +79,13 @@ function Header(props){
         localStorage.setItem("ec-token", "");
     }
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={5000}
+        classNames="fade"
+        unmountOnExit
+      >
         <OuterDiv>
             <a href='https://ecbuild.netlify.com/'>
             <Logo src={require('../img/EmpoweredConversationLogo.png')} alt='Empowered Conversation logo'/>
@@ -83,12 +93,15 @@ function Header(props){
             
             <NavDiv>
                 <StyledLink to='/'>Home</StyledLink>
-                <a href='https://ecbuild.netlify.com/'>How It Works</a>
+
                 <a href='https://ecbuild.netlify.com/'>About</a>
                 <StyledLink to='/form'>Begin Conversation</StyledLink>
+                <StyledLink to='/module'>Module</StyledLink>
+
                 <AccountIcon handleLogOut={handleLogOut} isLoggedIn={props.isLoggedIn}/>
             </NavDiv>
         </OuterDiv>
+        </CSSTransition>
     );
 }
 

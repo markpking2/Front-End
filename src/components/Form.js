@@ -8,16 +8,9 @@ import NamePhone from './NamePhone';
 import Submit from './Submit';
 import {connect} from 'react-redux';
 import {sendMessage, loginTest} from '../actions';
-import styled from 'styled-components';
 import {axiosWithAuth} from './AxiosAuth';
-import Modal from './Modal';
 
-// const OuterDiv = styled.div `
-//     display: flex;
-//     justify-content: center;
-//     padding: 2rem;
-//     width: 100%;
-// `
+import { CSSTransition } from "react-transition-group";
 
 
 function Form(props) {
@@ -50,6 +43,15 @@ function Form(props) {
 
   
   return (
+
+    <CSSTransition
+        in={true}
+        appear={true}
+        timeout={5000}
+        classNames="fade"
+        unmountOnExit
+      >
+
       <div>
          <div>
           <FormikForm>
@@ -66,14 +68,18 @@ function Form(props) {
           </FormikForm>
         </div>
       </div>
+
+      </CSSTransition>
+
   );
 }
 
 const WithForm = withFormik({
-  mapPropsToValues({ senderName, senderPhone, recipientName, recipientPhone, sendMessage }) {
+  mapPropsToValues({ recipientName, recipientPhone, sendMessage }) {
+    // senderName, senderPhone, 
     return {
-      senderName: senderName || '',
-      senderPhone: senderPhone || '',
+      // senderName: senderName || '',
+      // senderPhone: senderPhone || '',
       recipientName: recipientName || '',
       recipientPhone: recipientPhone || ''
     };
@@ -81,12 +87,12 @@ const WithForm = withFormik({
 
   //======VALIDATION SCHEMA==========
   validationSchema: Yup.object().shape({
-    senderName: Yup.string()
-      .required("Sender name is required"),
-    senderPhone: Yup.string()
-      .matches(/\d{10}/, 'Enter 10 digit phone number without any symbols')
-      .max(10, 'Enter 10 digit phone number without any symbols')
-      .required("Sender's phone is required"),
+    // senderName: Yup.string()
+    //   .required("Sender name is required"),
+    // senderPhone: Yup.string()
+    //   .matches(/\d{10}/, 'Enter 10 digit phone number without any symbols')
+    //   .max(10, 'Enter 10 digit phone number without any symbols')
+    //   .required("Sender's phone is required"),
     recipientName: Yup.string()
       .required("Recipient's name is required"),
     recipientPhone: Yup.string()
@@ -98,7 +104,7 @@ const WithForm = withFormik({
 
   handleSubmit(values, { props, setSubmitted, resetForm, setSubmitting }) {
     
-    values.senderPhone = '+1' + values.senderPhone;
+    // values.senderPhone = '+1' + values.senderPhone;
     values.recipientPhone = '+1' + values.recipientPhone;
     props.sendMessage(values, props.history);
 

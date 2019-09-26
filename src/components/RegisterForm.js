@@ -9,6 +9,9 @@ import ModalComponent from './Modal';
 import styled from 'styled-components';
 import { Button} from 'reactstrap';
 
+import { CSSTransition } from "react-transition-group";
+
+
 const StyledForm = styled(Form) `
     display: flex;
     flex-direction: column;
@@ -93,11 +96,22 @@ const RegisterForm = ({errors, touched, values, status, history, loginTest, regi
     },[])
 
     return(
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={5000}
+        classNames="fade"
+        unmountOnExit
+      >
         <div>
             <StyledForm>
                 <FormHeading>Register Form</FormHeading>
 
-                <NewField name='username' type='text' placeholder='What is your username?' />
+
+                <NewField name='senderName' type='text' placeholder='What is your name?' />
+                {touched.senderName && errors.senderName && (<Error>{errors.senderName}</Error>)}
+
+                <NewField name='username' type='text' placeholder='Enter a unique username' />
                 {touched.username && errors.username && (<Error>{errors.username}</Error>)}
                 
                 <NewField name='password' type='password' placeholder='What is your password?' />
@@ -108,6 +122,7 @@ const RegisterForm = ({errors, touched, values, status, history, loginTest, regi
                 
                 <span style={{'color': 'rgba(42, 72, 78, 1)', 'textAlign' : 'left'}}>Already have an account? Click <Link style={{'color': '#24B4A5', 'textDecoration' : 'none'}}to="/login">here</Link> to log in</span>
                 
+
                 <StyledButton type='submit'>Register</StyledButton>
 
             </StyledForm>            
@@ -115,20 +130,24 @@ const RegisterForm = ({errors, touched, values, status, history, loginTest, regi
             
 
         </div>
+        </CSSTransition>
     );
 };
 
 const FormikRegisterForm = withFormik({
-    mapPropsToValues({ username, password, phone }){
+
+    mapPropsToValues({ username, password, phone, senderName }){
         return{
             username: username || '',
             password: password || '',
-            phone: phone || ''
+            phone: phone || '',
+            senderName : senderName || ''
+
         };
     }, 
 
     validationSchema: Yup.object().shape({
-
+        senderName: Yup.string().required('Your name is required'),
         username: Yup.string().required('A username is required'),
         password: Yup.string().required('A password is required'),
         phone: Yup.string()

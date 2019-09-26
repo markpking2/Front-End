@@ -4,6 +4,9 @@ import {axiosWithAuth} from './AxiosAuth';
 import {connect} from 'react-redux';
 import {loginTest} from '../actions';
 
+import { CSSTransition } from "react-transition-group";
+
+
 const OuterContainer = styled.div `
     width: 80%;
     margin: 0 auto;

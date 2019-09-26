@@ -5,6 +5,9 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
+import { CSSTransition } from "react-transition-group";
+
+
 const StyledButton = styled(Button) `
     && {
         background-color: #24B4A5;
@@ -120,6 +123,13 @@ const FaIcon = styled(FontAwesomeIcon) `
 
 function LiabilityWaiver() {
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={5000}
+        classNames="fade"
+        unmountOnExit
+      >
         <div>
             <LiabilityContainer>
                 <ArrowDiv>
@@ -254,6 +264,7 @@ function LiabilityWaiver() {
             </AcceptDiv>
             <Link to='/form/submit'><StyledButton>I Accept & Continue</StyledButton></Link>
         </div>
+        </CSSTransition>
     );
 }
 

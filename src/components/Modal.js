@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import styled from 'styled-components';
 
+import { CSSTransition } from "react-transition-group";
+
+
 function ModalComponent(props) {
     const [modal, setModal ] = useState(true);
 
@@ -13,6 +16,15 @@ function ModalComponent(props) {
     }
 
         return (
+
+            <CSSTransition
+        in={true}
+        appear={true}
+        timeout={5000}
+        classNames="fade"
+        unmountOnExit
+      >
+
         <div>
             <Modal isOpen={modal} toggle={toggle} className='primary'>
             <ModalHeader id="login-modal" className="styled-header" toggle={toggle}>{props.title}</ModalHeader>
@@ -24,6 +36,9 @@ function ModalComponent(props) {
             </ModalFooter>
             </Modal>
         </div>
+
+        </CSSTransition>
+
         );
     
 }
