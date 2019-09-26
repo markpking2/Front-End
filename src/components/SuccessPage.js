@@ -17,7 +17,7 @@ const StyledBox = styled.div `
     flex-direction: column;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 0px;
+    border-radius: 5px;
     padding: 2rem 4rem;
     margin: 0 auto;
     width: 50%;

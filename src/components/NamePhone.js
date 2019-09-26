@@ -27,14 +27,14 @@ const NewField = styled(Field)`
   margin-bottom: 20px;
   color: rgb(42, 72, 78, 1);
 
-  border-radius: 0px;
+  border-radius: 5px;
   text-align: left;
   padding-left: 20px
 `
 const Video = styled.iframe `
   margin: 2rem auto;
   border: 0;
-  border-radius: 0px;
+  border-radius: 5px;
   width: 50%;
   @media screen and (max-width: 800px) {
     width: 60%;
@@ -68,7 +68,7 @@ const FormContainer = styled.div `
         width: 95%;
   }
   background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 0px;
+  border-radius: 5px;
 
 `
 
@@ -143,7 +143,7 @@ function NamePhone(props) {
                 <FormParagraph>Take a deep breath... </FormParagraph>
             </FormHeadingContainer>
 
-        <div>
+        {/* <div>
 
           {touched.senderName && errors.senderName && <p>{errors.senderName}</p>}
           <NewField 
@@ -151,15 +151,15 @@ function NamePhone(props) {
             name="senderName" 
             placeholder="Your name" 
           />
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           {touched.senderPhone && errors.senderPhone && <p>{errors.senderPhone}</p>}
           <NewField 
             type="text" 
             name="senderPhone" 
             placeholder="Your phone" 
           />
-        </div> */}
+        </div>  */}
         <div>
           {touched.recipientName && errors.recipientName && <p>{errors.recipientName}</p>}
           <NewField 

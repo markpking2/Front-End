@@ -7,9 +7,7 @@ import ModalComponent from './Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-
 import { CSSTransition } from "react-transition-group";
-
 
 const SubmitContainer = styled.div `
     flex-direction: row;
@@ -30,7 +28,7 @@ const SubmitContainer = styled.div `
     }
     
     background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 0px;
+    border-radius: 5px;
 `
 
 const FormHeadingContainer = styled.div `
@@ -50,7 +48,7 @@ const FormParagraph = styled.p`
 
 const StyledButton = styled(Button) `
     && {
-        min-width: 90px;
+        minWidth: 90px;
         margin-top: 2rem;
         background-color: #24B4A5;
         border-color: white !important;
