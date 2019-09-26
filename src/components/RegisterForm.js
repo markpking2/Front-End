@@ -8,7 +8,9 @@ import { Link } from 'react-router-dom';
 import ModalComponent from './Modal';
 import styled from 'styled-components';
 import { Button} from 'reactstrap';
+
 import { CSSTransition } from "react-transition-group";
+
 
 const StyledForm = styled(Form) `
     display: flex;
@@ -105,6 +107,7 @@ const RegisterForm = ({errors, touched, values, status, history, loginTest, regi
             <StyledForm>
                 <FormHeading>Register Form</FormHeading>
 
+
                 <NewField name='senderName' type='text' placeholder='What is your name?' />
                 {touched.senderName && errors.senderName && (<Error>{errors.senderName}</Error>)}
 
@@ -119,6 +122,7 @@ const RegisterForm = ({errors, touched, values, status, history, loginTest, regi
                 
                 <span style={{'color': 'rgba(42, 72, 78, 1)', 'textAlign' : 'left'}}>Already have an account? Click <Link style={{'color': '#24B4A5', 'textDecoration' : 'none'}}to="/login">here</Link> to log in</span>
                 
+
                 <StyledButton type='submit'>Register</StyledButton>
 
             </StyledForm>            
@@ -131,12 +135,14 @@ const RegisterForm = ({errors, touched, values, status, history, loginTest, regi
 };
 
 const FormikRegisterForm = withFormik({
+
     mapPropsToValues({ username, password, phone, senderName }){
         return{
             username: username || '',
             password: password || '',
             phone: phone || '',
             senderName : senderName || ''
+
         };
     }, 
 

@@ -26,6 +26,7 @@ const NewField = styled(Field)`
   background-color: white;
   margin-bottom: 20px;
   color: rgb(42, 72, 78, 1);
+
   border-radius: 0px;
   text-align: left;
   padding-left: 20px
@@ -86,6 +87,21 @@ const FormParagraph = styled.p`
   text-align: left;
 `
 
+const FormHeadingContainer = styled.div `
+  display: flex;
+  flex-direction: column;
+`
+
+const FormHeading = styled.h1 `
+  color: rgb(42, 72, 78, 1);
+  text-align: left;
+`
+
+const FormParagraph = styled.p`
+  color: rgb(42, 72, 78, 1);
+  text-align: left;
+`
+
 function NamePhone(props) {
     const [error, setError] = useState(false);
 
@@ -109,6 +125,7 @@ function NamePhone(props) {
     
 
     return (
+
       <CSSTransition
         in={true}
         appear={true}
@@ -116,6 +133,7 @@ function NamePhone(props) {
         classNames="fade"
         unmountOnExit
       >
+
       <div>
         <h2>Please watch this video before filling out the form below</h2>
         <Video width="560" height="315" src="https://www.youtube.com/embed/vOa2pj5jdmo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></Video>
@@ -124,7 +142,9 @@ function NamePhone(props) {
                 <FormHeading>Start a Conversation</FormHeading>
                 <FormParagraph>Take a deep breath... </FormParagraph>
             </FormHeadingContainer>
-        {/* <div>
+
+        <div>
+
           {touched.senderName && errors.senderName && <p>{errors.senderName}</p>}
           <NewField 
             type="text" 

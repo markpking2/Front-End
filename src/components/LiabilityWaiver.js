@@ -4,7 +4,9 @@ import { Button } from 'reactstrap';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
+
 import { CSSTransition } from "react-transition-group";
+
 
 const StyledButton = styled(Button) `
     && {

@@ -67,6 +67,7 @@ table {
   width: 80%;
     margin: 0 auto;
     color: white;
+
 }
 
 
@@ -84,4 +85,5 @@ table {
 .fade-appear.fade-appear-active{
   opacity:1;
   transition: 1000ms ease-out;
+
 }

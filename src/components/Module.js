@@ -5,10 +5,12 @@ import { Button } from 'reactstrap';
 import {connect} from 'react-redux';
 import {activateModuleModal, deactivateModuleModal} from '../actions';
 import ModalComponent from './Modal';
+
 import { CSSTransition } from "react-transition-group";
 
 const StyledDiv = styled.div `
     color: rgb(42, 72, 78, 1)
+
 `
 
 const StyledButton = styled(Button) `
@@ -23,6 +25,7 @@ const StyledButton = styled(Button) `
         border-color: #24B4A5 !important;
     }
 `
+
 
 const FormHeading = styled.h1 `
     color: rgba(42, 72, 78, 1);
@@ -46,10 +49,12 @@ const StyledInput = styled.input`
 const StyledP = styled.p`
     color: rgba(42, 72, 78, 1),
     text-align: left;
+
 `
 
 const StyledForm = styled.form `
     display: flex;
+
     flex-direction: column;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.7);
@@ -69,11 +74,14 @@ const StyledForm = styled.form `
     @media screen and (max-width: 500px) {
         width: 95%;
     }
+
 `
 
 const Video = styled.iframe `
     border: 0;
+
     border-radius: 0px;
+
     margin: 2rem auto;
     width: 50%;
     @media screen and (max-width: 800px) {
@@ -105,10 +113,12 @@ const Module = (props) => {
     }
     const handleSubmit = e =>{
         e.preventDefault();
+
         axios
         .post('https://empowered-conversations.herokuapp.com/module', code)
         .then(res=>{
                 props.activateModuleModal();
+
             setSent(true);  //this removes button
             // moduleModal in state should be set to true
             setCode({userID: "", guest: ""});
@@ -118,6 +128,7 @@ const Module = (props) => {
         })
     }
     return ( 
+
         <CSSTransition
         in={true}
         appear={true}
@@ -145,6 +156,7 @@ const Module = (props) => {
         {props.moduleModal && <ModalComponent message="Thank you for completing this module. The person who directed you here has been notified and will be in touch with you shortly" title="Thank you" history={props.history} endPath='/module' deactivate={props.deactivateModuleModal} />}
         </>
         </CSSTransition>
+
      );
 }
 

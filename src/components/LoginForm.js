@@ -8,7 +8,9 @@ import { Link } from 'react-router-dom';
 import ModalComponent from './Modal';
 import { Button } from 'reactstrap';
 import styled from 'styled-components';
+
 import { CSSTransition } from "react-transition-group";
+
 
 const StyledButton = styled(Button) `
     margin-top: 20px;
@@ -87,10 +89,7 @@ const LoginForm = ({errors, touched, values, status, history, loginTest, loginMo
         }
     },[])
 
-    // const handleTest = () =>{
-    //     console.log('test button');
-    //     activateLoginModal();
-    // }
+
 
     return(
                   <CSSTransition
@@ -114,7 +113,9 @@ const LoginForm = ({errors, touched, values, status, history, loginTest, loginMo
 
                 <StyledButton type='submit'>Login</StyledButton>
             </StyledForm>
+
             {loginModal && <ModalComponent message="You have been logged in!" title="Login successful" history={history} endPath='/form' deactivate={deactivateLoginModal} />}
+
 
         </div>
             </CSSTransition>

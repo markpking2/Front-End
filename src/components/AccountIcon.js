@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
 import { CSSTransition } from "react-transition-group";
+
 
 const StyledLink = styled(Link) `
     text-decoration: none;
@@ -36,6 +38,7 @@ const XDiv = styled.div `
 function AccountIcon(props) {
     const [accountIcon, setAccountIcon] = useState(true);
     return (
+
         <CSSTransition
         in={true}
         appear={true}
@@ -44,6 +47,7 @@ function AccountIcon(props) {
         unmountOnExit
       >
         <div style={{'min-width': '100px', 'min-height': '75px'}}>
+
             {accountIcon && <FaIcon onClick={() => setAccountIcon(false)} icon={faUserCircle} className='fa-3x'/>}
             <StyledDiv>
                 <XDiv>
@@ -54,7 +58,9 @@ function AccountIcon(props) {
                 {!accountIcon && !props.isLoggedIn && <StyledLink to='/login'>Log In</StyledLink>}
             </StyledDiv>
         </div>
+
         </CSSTransition>
+
     )
 }
 

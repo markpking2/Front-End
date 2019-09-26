@@ -5,7 +5,9 @@ import { Button } from 'reactstrap';
 import {connect} from 'react-redux';
 import {logoutFunction, loginTest} from '../actions';
 import AccountIcon from './AccountIcon';
+
 import { CSSTransition } from "react-transition-group";
+
 
 const Logo = styled.img `
     width: 100px;
@@ -91,9 +93,11 @@ function Header(props){
             
             <NavDiv>
                 <StyledLink to='/'>Home</StyledLink>
+
                 <a href='https://ecbuild.netlify.com/'>About</a>
                 <StyledLink to='/form'>Begin Conversation</StyledLink>
                 <StyledLink to='/module'>Module</StyledLink>
+
                 <AccountIcon handleLogOut={handleLogOut} isLoggedIn={props.isLoggedIn}/>
             </NavDiv>
         </OuterDiv>

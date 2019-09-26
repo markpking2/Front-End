@@ -9,7 +9,9 @@ import Submit from './Submit';
 import {connect} from 'react-redux';
 import {sendMessage, loginTest} from '../actions';
 import {axiosWithAuth} from './AxiosAuth';
+
 import { CSSTransition } from "react-transition-group";
+
 
 function Form(props) {
 
@@ -41,6 +43,7 @@ function Form(props) {
 
   
   return (
+
     <CSSTransition
         in={true}
         appear={true}
@@ -48,6 +51,7 @@ function Form(props) {
         classNames="fade"
         unmountOnExit
       >
+
       <div>
          <div>
           <FormikForm>
@@ -64,7 +68,9 @@ function Form(props) {
           </FormikForm>
         </div>
       </div>
+
       </CSSTransition>
+
   );
 }
 

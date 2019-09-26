@@ -7,7 +7,9 @@ import ModalComponent from './Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+
 import { CSSTransition } from "react-transition-group";
+
 
 const SubmitContainer = styled.div `
     flex-direction: row;
@@ -87,8 +89,10 @@ function Submit({values, setSubmitted, history, messageModal}) {
                 </ArrowDiv>
                 <div style={{'padding': '4rem'}}>
                 <FormHeading>Data to be submitted:</FormHeading>
+
                 {/* <FormParagraph>Your name: {values.senderName}</FormParagraph>
                 <FormParagraph>Your phone: {values.senderPhone}</FormParagraph> */}
+
                 <FormParagraph>Recipient name: {values.recipientName}</FormParagraph>
                 <FormParagraph>Recipient phone: {values.recipientPhone}</FormParagraph>
                 
