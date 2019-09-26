@@ -18,6 +18,7 @@ const AnimationContainer = styled.div`
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
   -webkit-transform: translate3d(0, 0, 0);
+  min-height: 80vh;
 `;
 
 const Empowered = styled.div`
@@ -27,7 +28,6 @@ const Empowered = styled.div`
   white-space: nowrap;
   padding: 0;
   opacity: 1;
-  z-index: 1;
 `;
 
 const Conversation = styled.span`
@@ -61,9 +61,11 @@ const WhenWords = styled.div`
   font-family: "DM Serif Text", serif;
   font-size: 40px;
   position: relative;
+  margin-top: 2rem;
 `;
 
 const Message = styled.span`
+  margin-top: 3rem;
   font-size: 1.5rem;
   opacity: 0;
 `;
