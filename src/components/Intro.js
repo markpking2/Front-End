@@ -63,11 +63,10 @@ const WhenWords = styled.div`
   font-family: "DM Serif Text", serif;
   font-size: 40px;
   position: relative;
-  margin-top: 2rem;
+  margin-top: 1rem;
 `;
 
 const Message = styled.span`
-  margin-top: 3rem;
   font-size: 1.5rem;
   opacity: 0;
 `;
@@ -164,6 +163,7 @@ function Intro(props) {
             When words matter most
           </WhenWords>
         </div>
+        <div style={{'margin-top': '40px'}}>
         <Message
           ref={elem => {
             message1 = elem;
@@ -181,6 +181,7 @@ function Intro(props) {
           Otherwise, start your conversation{" "}
           <StyledLink to="/login">here</StyledLink>.
         </Message>
+        </div>
       </StyledDiv>
     </AnimationContainer>
   );
