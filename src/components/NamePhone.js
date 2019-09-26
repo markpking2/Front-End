@@ -87,20 +87,20 @@ const FormParagraph = styled.p`
   text-align: left;
 `
 
-const FormHeadingContainer = styled.div `
-  display: flex;
-  flex-direction: column;
-`
+// const FormHeadingContainer = styled.div `
+//   display: flex;
+//   flex-direction: column;
+// `
 
-const FormHeading = styled.h1 `
-  color: rgb(42, 72, 78, 1);
-  text-align: left;
-`
+// const FormHeading = styled.h1 `
+//   color: rgb(42, 72, 78, 1);
+//   text-align: left;
+// `
 
-const FormParagraph = styled.p`
-  color: rgb(42, 72, 78, 1);
-  text-align: left;
-`
+// const FormParagraph = styled.p`
+//   color: rgb(42, 72, 78, 1);
+//   text-align: left;
+// `
 
 function NamePhone(props) {
     const [error, setError] = useState(false);

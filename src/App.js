@@ -36,10 +36,10 @@ const OuterDiv = styled.div `
 `
 
 
-  @media screen and (max-width: 500px) {
-      min-height: 90vh;
-  }
-`
+//   @media screen and (max-width: 500px) {
+//       min-height: 90vh;
+//   }
+// `
 const values = {
   senderName: "Zach",
   senderPhone: "1234567890",
