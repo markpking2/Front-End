@@ -237,15 +237,15 @@ const MyAccount = ({
             className="styled-header"
             toggle={toggle}
           >
-            WARNING
+            Warning
           </ModalHeader>
-          <ModalBody>Are you sure you want to delete your account?!</ModalBody>
+          <ModalBody>Are you sure you want to delete your account?</ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={() => toggle()}>
-              Noooooo!!!
+              No
             </Button>
             <Button color="danger" onClick={() => handleDelete()}>
-              Yass
+              Yes
             </Button>
           </ModalFooter>
         </Modal>
