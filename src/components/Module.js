@@ -7,7 +7,6 @@ import { activateModuleModal, deactivateModuleModal } from "../actions";
 import ModalComponent from "./Modal";
 import { axiosWithAuth } from "./AxiosAuth";
 import { loginTest } from "../actions";
-
 import { CSSTransition } from "react-transition-group";
 
 const StyledDiv = styled.div`
@@ -19,7 +18,6 @@ const StyledButton = styled(Button)`
     background: #24b4a5;
     border-color: white !important;
   }
-
   &:hover {
     background: white !important;
     color: #24b4a5 !important;
@@ -62,15 +60,12 @@ const StyledForm = styled.form`
   padding: 2rem 4rem;
   margin: 2rem auto;
   width: 50%;
-
   @media screen and (max-width: 800px) {
     width: 60%;
   }
-
   @media screen and (max-width: 600px) {
     width: 80%;
   }
-
   @media screen and (max-width: 500px) {
     width: 95%;
   }
@@ -78,20 +73,16 @@ const StyledForm = styled.form`
 
 const Video = styled.iframe`
   border: 0;
-
   border-radius: 5px;
-
   margin: 2rem auto;
   width: 50%;
   @media screen and (max-width: 800px) {
     width: 60%;
   }
-
   @media screen and (max-width: 600px) {
     margin: 0 auto;
     width: 80%;
   }
-
   @media screen and (max-width: 500px) {
     width: 95%;
   }

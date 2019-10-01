@@ -1,35 +1,18 @@
-/* Had trouble using hex values w/ styled components, here are rgba values:
-
-Green 4 (darkest)
-  rgba(42, 72, 78, 1)
-
-Green 3
-  rgba(55, 115, 117, 1)
-
-Green 2
-  rgba(168, 216, 205, 1)
-
-Green 1 (lightest)
-  rgba(221, 239, 227, 1)
-
-*/
-
-/* HTML5 display-role reset for older browsers */
+*{
+  font-family: "Open Sans", sans-serif;
+}
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'DM Serif Text', serif;
   color:white;
 }
 
-p {
-  font-family: 'Open Sans', sans-serif;
-}
 body {
   line-height: 1;
+
 }
 ol, ul {
 	list-style: none;
@@ -86,4 +69,15 @@ table {
   opacity:1;
   transition: 1000ms ease-out;
 
+}
+.logo-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 40px;
+}
+@media screen and (max-width: 600px) {
+  .logo-wrapper{
+    margin-left: 0;
+  }
 }

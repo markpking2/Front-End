@@ -10,7 +10,6 @@ import { CSSTransition } from "react-transition-group";
 
 const Logo = styled.img`
   width: 100px;
-
   &:hover {
     opacity: 0.4;
   }
@@ -19,17 +18,13 @@ const Logo = styled.img`
 const OuterDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 2rem 2rem 2rem;
-  min-height: 120px;
-
+  padding: 0;
+  min-height: 95px;
   @media screen and (max-width: 600px) {
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
+    padding: 1em;
   }
 `;
 const NavDiv = styled.div`
-  width: 55%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -37,31 +32,32 @@ const NavDiv = styled.div`
   text-decoration: none;
   > a {
     text-decoration: none;
-    color: white;
+    color: #57CEB3;
     font-family: "Open Sans", sans-serif;
     font-size: 1.1rem;
+    font-weight:400;
+    margin-right:30px;
+    @media screen and (max-width: 850px) {
+      font-size:1rem;
+      margin-right:0px;
+    }
   }
-
   > a:hover {
     color: #24b4a5;
     text-decoration: none;
+    transform:scale(1.1);
   }
-
   @media screen and (max-width: 950px) {
     width: 75%;
   }
-
   @media screen and (max-width: 750px) {
     width: 85%;
   }
-
   @media screen and (max-width: 600px) {
     width: 100%;
   }
-
   @media screen and (max-width: 550px) {
-    flex-direction: column;
-    align-items: center;
+    display:none;
   }
 `;
 
@@ -71,11 +67,6 @@ const StyledLink = styled(Link)`
   color: white;
 `;
 
-const StyledButton = styled(Button)`
-  && {
-    background-color: IndianRed;
-  }
-`;
 
 function Header(props) {
   const handleLogOut = () => {
@@ -91,7 +82,7 @@ function Header(props) {
       unmountOnExit
     >
       <OuterDiv>
-        <a href="https://ecbuild.netlify.com/">
+        <a className="logo-wrapper"href="https://ecbuild.netlify.com/">
           <Logo
             src={require("../img/EmpoweredConversationLogo.png")}
             alt="Empowered Conversation logo"

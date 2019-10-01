@@ -89,6 +89,7 @@ const FormHeading = styled.h1`
   text-align: left;
   margin-bottom: 20px;
   width: 100%;
+  font-family: "Open Sans", sans-serif;
 `;
 
 const Error = styled.p`
@@ -136,7 +137,7 @@ const RegisterForm = ({
     >
       <div>
         <StyledForm>
-          <FormHeading>Register Form</FormHeading>
+          <FormHeading>Sign Up</FormHeading>
 
           <Names>
             <Name name="firstName" type="text" placeholder="First name?" />
@@ -194,7 +195,7 @@ const RegisterForm = ({
             to log in
           </span>
 
-          <StyledButton type="submit">Register</StyledButton>
+          <StyledButton type="submit">Sumbit</StyledButton>
         </StyledForm>
         {registerModal && (
           <ModalComponent

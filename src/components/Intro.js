@@ -18,35 +18,41 @@ const AnimationContainer = styled.div`
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
   -webkit-transform: translate3d(0, 0, 0);
-  min-height: 80vh;
+  @media screen and (max-width: 850px) {
+   padding-top: 10vh;
+  }
 `;
 
 const Empowered = styled.div`
-  font-family: "DM Serif Text", serif;
+  font-family: "Open Sans", sans-serif;
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   padding: 0;
   opacity: 1;
-  height: 100px;
+  color: #212121;
+  @media screen and (max-width: 718px) {
+   margin-bottom: -45px;
+  }
 `;
 
 const Conversation = styled.span`
-  font-family: "DM Serif Text", serif;
+  font-family: "Open Sans", sans-serif;
   margin-left: -355px;
-`;
+  font-weight:900;
+  color: #212121;
 
+`;
 const ConversationDiv = styled.div`
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   width: 0px;
-  height: 100px;
 `;
 
 const StyledDiv = styled.div`
   width: 100vw;
-  height: 250px;
+  height: auto;
   padding: 0;
 
   @media screen and (max-width: 850px) {
@@ -60,25 +66,49 @@ const StyledDiv = styled.div`
   }
 `;
 const WhenWords = styled.div`
-  font-family: "DM Serif Text", serif;
-  font-size: 40px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 26px;
   position: relative;
-  margin-top: 1rem;
+  color: #666;
+  font-style: italic;
 `;
 
 const Message = styled.span`
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   opacity: 0;
+  display:block;
+  color: grey;
 `;
+
 
 const StyledLink = styled(Link)`
   color: white;
+  background: #57CEB3;
+  padding: 10px 20px;
+  border-radius:10px;
+  display:block;
+  max-width:max-content;
+  margin: 0 auto;
 
   &:hover {
     text-decoration: none;
+    color: #fff;
+  }
+`;
+const StyledLink2 = styled(Link)`
+font-size: 16px;
+  color: #57CEB3;
+  display:block;
+  max-width:max-content;
+  margin: 1em auto;
+
+  &:hover {
+    text-decoration: underline;
     color: #24b4a5;
   }
 `;
+
+
 
 function Intro(props) {
   let empowered = useRef(null);
@@ -169,17 +199,14 @@ function Intro(props) {
             message1 = elem;
           }}
         >
-          If you received a verification code, click{" "}
-          <StyledLink to="/module">here</StyledLink>.
+          <StyledLink to="/login">Start a conversation</StyledLink>
         </Message>
         <Message
           ref={elem => {
             message2 = elem;
           }}
         >
-          {" "}
-          Otherwise, start your conversation{" "}
-          <StyledLink to="/login">here</StyledLink>.
+          <StyledLink2 className="code" to="/module">Enter a verification code</StyledLink2>
         </Message>
         </div>
       </StyledDiv>

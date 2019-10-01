@@ -80,6 +80,7 @@ const FormHeadingContainer = styled.div `
 const FormHeading = styled.h1 `
   color: rgb(42, 72, 78, 1);
   text-align: left;
+  font-family: "Open Sans", sans-serif;
 `
 
 const FormParagraph = styled.p`

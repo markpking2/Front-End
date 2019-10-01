@@ -14,16 +14,16 @@ const FooterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  min-height: 6vh;
-  background: #2a484e;
+  min-height: 4vh;
+  background: #57CEB3;
   @media screen and (max-width: 800px) {
     flex-direction: column;
     align-items: center;
 
-    min-height: 8vh;
+    max-height: 4vh;
   }
   @media screen and (max-width: 500px) {
-    min-height: 13vh;
+    min-height: 6vh;
   }
 `;
 const StyledLink = styled(Link)`
@@ -31,12 +31,12 @@ const StyledLink = styled(Link)`
   color: white;
 `;
 const Links = styled.div`
-  width: 20%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   > a {
     color: white;
+    margin-right: 10px;
   }
 
   > a:hover {
@@ -46,10 +46,11 @@ const Links = styled.div`
 `;
 
 const Copyright = styled.div`
-  width: 40%;
+  width: max-content;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left:1rem;
 
   color: white;
 
@@ -63,6 +64,7 @@ const Copyright = styled.div`
 
   > a {
     color: white;
+    font-size:12px;
   }
 
   > a:hover {
@@ -73,6 +75,7 @@ const Copyright = styled.div`
 
 const FaIcon = styled(FontAwesomeIcon)`
   color: white;
+  height: 20px;
 
   &:hover {
     color: #24b4a5;
@@ -91,9 +94,7 @@ function Footer() {
       <FooterContainer>
         <Copyright>
           <a href="https://empoweredconversation.com/">
-            <span>© Empowered Conversations 2019. </span>
-
-            <span>All rights reserved.</span>
+            <span>© Empowered Conversations 2019. All rights reserved.</span>
           </a>
         </Copyright>
         <Links>

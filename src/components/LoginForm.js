@@ -52,7 +52,8 @@ const StyledForm = styled(Form)`
   border-radius: 5px;
   padding: 2rem 4rem;
   margin: 2rem auto;
-  width: 50%;
+  width: 30%;
+  min-width: 400px;
 
   @media screen and (max-width: 800px) {
     width: 60%;
@@ -64,13 +65,15 @@ const StyledForm = styled(Form)`
 
   @media screen and (max-width: 500px) {
     width: 95%;
+    min-width:0;
   }
 `;
 const FormHeading = styled.h1`
   color: rgba(42, 72, 78, 1);
-  text-align: left;
+  text-align: center;
   margin-bottom: 20px;
   width: 100%;
+  font-family: "Open Sans", sans-serif;
 `;
 
 const LoginForm = ({
@@ -109,7 +112,7 @@ const LoginForm = ({
     >
       <div>
         <StyledForm>
-          <FormHeading>Login Form</FormHeading>
+          <FormHeading>Login</FormHeading>
           <NewField
             name="username"
             type="text"
@@ -132,7 +135,7 @@ const LoginForm = ({
             >
               here
             </Link>{" "}
-            to register.
+            to sign up.
           </span>
 
           <StyledButton type="submit">Login</StyledButton>
