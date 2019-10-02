@@ -32,7 +32,7 @@ const NavDiv = styled.div`
   text-decoration: none;
   > a {
     text-decoration: none;
-    color: #57CEB3;
+    color: #fff;
     font-family: "Open Sans", sans-serif;
     font-size: 1.1rem;
     font-weight:400;
@@ -41,11 +41,21 @@ const NavDiv = styled.div`
       font-size:1rem;
       margin-right:0px;
     }
+    @media screen and (max-width: 550px) {
+      display:none;
+    }
+  }
+  > img{
+    display:none;
+    @media screen and (max-width: 550px) {
+      display:flex;
+      margin-left: auto;
+    }
   }
   > a:hover {
-    color: #24b4a5;
+    color:#666;
     text-decoration: none;
-    transform:scale(1.1);
+    transform:scale(1.15);
   }
   @media screen and (max-width: 950px) {
     width: 75%;
@@ -56,15 +66,16 @@ const NavDiv = styled.div`
   @media screen and (max-width: 600px) {
     width: 100%;
   }
-  @media screen and (max-width: 550px) {
-    display:none;
-  }
+
 `;
 
 const StyledLink = styled(Link)`
   font-size: 1.1rem;
   text-decoration: none;
   color: white;
+  @media screen and (max-width: 550px) {
+    display:none;
+  }
 `;
 
 
@@ -84,14 +95,13 @@ function Header(props) {
       <OuterDiv>
         <a className="logo-wrapper"href="https://ecbuild.netlify.com/">
           <Logo
-            src={require("../img/EmpoweredConversationLogo.png")}
+            src={require("../img/ec-logo-w.svg")}
             alt="Empowered Conversation logo"
           />
         </a>
 
         <NavDiv>
           <StyledLink to="/">Home</StyledLink>
-
           <a href="https://ecbuild.netlify.com/">About</a>
           <StyledLink to="/form">Begin Conversation</StyledLink>
           <StyledLink to="/module">Module</StyledLink>
@@ -99,6 +109,7 @@ function Header(props) {
           {props.isLoggedIn && <AccountIcon
             handleLogOut={handleLogOut}
           />}
+          <img onClick={props.drawerClickHandler} src={require('../img/ham.svg')}></img>
         </NavDiv>
       </OuterDiv>
     </CSSTransition>

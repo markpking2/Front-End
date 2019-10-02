@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Route, Switch } from "react-router-dom";
 import Form from "./components/Form";
 import LoginForm from "./components/LoginForm";
@@ -12,6 +12,8 @@ import SuccessPage from "./components/SuccessPage";
 import Module from "./components/Module";
 import MyAccount from "./components/MyAccount";
 import Intro from "./components/Intro";
+import SideDrawer from './components/SideDrawer'
+import Backdrop from './components/Backdrop'
 
 
 const OuterDiv = styled.div`
@@ -31,11 +33,24 @@ const OuterDiv = styled.div`
 
 
 function App() {
+  const [sideDrawerOpen, setSideDrawerOpen]=useState(false)
+const  drawerToggleClickHandler = () =>{
+    setSideDrawerOpen(!sideDrawerOpen)
+  }
+  const  backdropClickHandler = () =>{
+    setSideDrawerOpen(false)
+  }
+  let backdrop;
+  if(sideDrawerOpen){
+    backdrop =   <Backdrop click={backdropClickHandler}/>;
+  }
   return (
-    <div>
+    <div style={{height:'100%'}}>
+      <SideDrawer show={sideDrawerOpen}/>
+      {backdrop}
       <OuterDiv>
         <header className="App-header">
-          <Header />
+          <Header drawerClickHandler={drawerToggleClickHandler}/>
           <Switch>
             <Route exact path="/" component={Intro} />
             <PrivateRoute path="/success" component={SuccessPage} />

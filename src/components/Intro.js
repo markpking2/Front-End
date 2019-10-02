@@ -54,12 +54,10 @@ const StyledDiv = styled.div`
   width: 100vw;
   height: auto;
   padding: 0;
-
   @media screen and (max-width: 850px) {
     height: 500px;
     padding: 2rem;
   }
-
   @media screen and (max-width: 550px) {
     height: 700px;
     padding: 2rem;
@@ -72,15 +70,12 @@ const WhenWords = styled.div`
   color: #666;
   font-style: italic;
 `;
-
 const Message = styled.span`
   font-size: 1.4rem;
   opacity: 0;
   display:block;
   color: grey;
 `;
-
-
 const StyledLink = styled(Link)`
   color: white;
   background: #57CEB3;
@@ -89,7 +84,6 @@ const StyledLink = styled(Link)`
   display:block;
   max-width:max-content;
   margin: 0 auto;
-
   &:hover {
     text-decoration: none;
     color: #fff;
@@ -101,14 +95,11 @@ font-size: 16px;
   display:block;
   max-width:max-content;
   margin: 1em auto;
-
   &:hover {
     text-decoration: underline;
     color: #24b4a5;
   }
 `;
-
-
 
 function Intro(props) {
   let empowered = useRef(null);
@@ -117,12 +108,10 @@ function Intro(props) {
   let whenWords = useRef(null);
   let message1 = useRef(null);
   let message2 = useRef(null);
-
   let tl = new TimelineMax();
   let tl2 = new TimelineMax();
   let tl3 = new TimelineMax();
   let tl4 = new TimelineMax();
-
   const [animation, setAnimation] = useState(null);
 
   useEffect(() => {
