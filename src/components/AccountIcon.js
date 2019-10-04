@@ -65,12 +65,12 @@ function AccountIcon(props) {
             )}
           </XDiv>
           {!accountIcon && (
-            <StyledLink to="/login" onClick={() => props.handleLogOut()}>
+            <StyledLink to="/login" onClick={() => {props.handleLogOut(); props.click()}}>
               Log Out
             </StyledLink>
           )}
           {!accountIcon && (
-            <StyledLink to="/account">My Account</StyledLink>
+            <StyledLink onClick={props.click} to="/account">My Account</StyledLink>
           )}
         </StyledDiv>
       </div>

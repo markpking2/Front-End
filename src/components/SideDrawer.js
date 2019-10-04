@@ -13,6 +13,7 @@ const StyledList = styled.ul`
 display: flex;
 flex-direction:column;
 padding:0;
+margin: 0;
 > .mobile-li{
 width: 100%;
 color: green;
@@ -26,7 +27,7 @@ border-bottom:1px solid #e0e0e0;
 > .acc-icon-mobile{
     width: 100%;
     text-align:center;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
 }
 
 `;
@@ -44,10 +45,10 @@ const sideDrawer = props => {
             <li className="mobile-li"><Link className="drawer-link" to="/form">Begin Conversation</Link></li>
             <li className="mobile-li"><Link className="drawer-link" to="/module">Module</Link></li>
             {!props.isLoggedIn && <li className="mobile-li"><Link className="drawer-link" to="/login">Log In</Link></li>}
-          {props.isLoggedIn && <li className='acc-icon-mobile'><AccountIcon
-            handleLogOut={handleLogOut}
-          /></li>}
         </StyledList>
+        {props.isLoggedIn && <StyledList><li className='acc-icon-mobile'><AccountIcon click={props.click}
+            handleLogOut={handleLogOut}
+          /></li></StyledList>}
     </nav>
     )};
 
