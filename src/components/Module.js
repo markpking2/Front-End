@@ -44,11 +44,6 @@ const StyledInput = styled.input`
   padding-left: 20px;
 `;
 
-const StyledP = styled.p`
-    color: rgba(42, 72, 78, 1),
-    text-align: left;
-
-`;
 
 const StyledForm = styled.form`
   display: flex;
@@ -64,7 +59,7 @@ const StyledForm = styled.form`
     width: 60%;
   }
   @media screen and (max-width: 600px) {
-    width: 80%;
+    width: 95%;
   }
   @media screen and (max-width: 500px) {
     width: 95%;
@@ -73,19 +68,25 @@ const StyledForm = styled.form`
 
 const Video = styled.iframe`
   border: 0;
-  border-radius: 5px;
-  margin: 2rem auto;
+  border-radius: 10px;
+  margin: 0 auto;
+
   width: 50%;
   @media screen and (max-width: 800px) {
     width: 60%;
   }
   @media screen and (max-width: 600px) {
     margin: 0 auto;
-    width: 80%;
+    width: 95%;
   }
   @media screen and (max-width: 500px) {
     width: 95%;
   }
+`;
+const StyledTitle = styled.h2`
+color: rgba(42, 72, 78, 1);
+padding-bottom: 2rem;
+
 `;
 
 const Module = props => {
@@ -137,7 +138,7 @@ const Module = props => {
       unmountOnExit
     >
       <>
-        <h2>Please watch the video below</h2>
+        <StyledTitle>Please watch the video below</StyledTitle>
         <Video
           width="560"
           height="315"
