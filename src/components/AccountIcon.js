@@ -17,6 +17,11 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const StyledContainer= styled.div`
+min-width:100px;
+
+`;
+
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -46,7 +51,7 @@ function AccountIcon(props) {
       classNames="fade"
       unmountOnExit
     >
-      <div style={{'min-width': '100px'}}>
+      <StyledContainer>
         {accountIcon && (
           <FaIcon
             onClick={() => setAccountIcon(false)}
@@ -73,7 +78,7 @@ function AccountIcon(props) {
             <StyledLink onClick={props.click} to="/account">My Account</StyledLink>
           )}
         </StyledDiv>
-      </div>
+        </StyledContainer>
     </CSSTransition>
   );
 }

@@ -65,6 +65,7 @@ const NavDiv = styled.div`
   }
   @media screen and (max-width: 600px) {
     width: 100%;
+    display:none;
   }
 
 `;
@@ -76,6 +77,12 @@ const StyledLink = styled(Link)`
   @media screen and (max-width: 550px) {
     display:none;
   }
+`;
+const MobileMenu = styled.img`
+
+@media screen and (min-width: 600px) {
+  display:none;
+}
 `;
 
 
@@ -106,11 +113,11 @@ function Header(props) {
           <StyledLink to="/form">Begin Conversation</StyledLink>
           <StyledLink to="/module">Module</StyledLink>
           {!props.isLoggedIn && <StyledLink to="/login">Log In</StyledLink>}
-          {props.isLoggedIn && <AccountIcon
+          {props.isLoggedIn && <AccountIcon className='account-icon'
             handleLogOut={handleLogOut}
           />}
-          <img onClick={props.drawerClickHandler} src={require('../img/ham.svg')}></img>
         </NavDiv>
+        <MobileMenu onClick={props.drawerClickHandler} src={require('../img/ham.svg')}></MobileMenu>
       </OuterDiv>
     </CSSTransition>
   );

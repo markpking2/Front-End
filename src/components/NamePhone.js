@@ -78,7 +78,7 @@ const FormHeadingContainer = styled.div `
 `
 
 const FormHeading = styled.h1 `
-  color: rgb(42, 72, 78, 1);
+    color: rgba(42, 72, 78, 1);
   text-align: left;
   font-family: "Open Sans", sans-serif;
 `
@@ -87,21 +87,12 @@ const FormParagraph = styled.p`
   color: rgb(42, 72, 78, 1);
   text-align: left;
 `
+const StyledTitle = styled.h2`
+color: rgba(42, 72, 78, 1);
+padding-bottom: 2rem;
 
-// const FormHeadingContainer = styled.div `
-//   display: flex;
-//   flex-direction: column;
-// `
+`;
 
-// const FormHeading = styled.h1 `
-//   color: rgb(42, 72, 78, 1);
-//   text-align: left;
-// `
-
-// const FormParagraph = styled.p`
-//   color: rgb(42, 72, 78, 1);
-//   text-align: left;
-// `
 
 function NamePhone(props) {
     const [error, setError] = useState(false);
@@ -136,7 +127,7 @@ function NamePhone(props) {
       >
 
       <div>
-        <h2>Please watch this video before filling out the form below</h2>
+        <StyledTitle>Please watch this video before filling out the form below</StyledTitle>
         <Video width="560" height="315" src="https://www.youtube.com/embed/vOa2pj5jdmo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></Video>
         <FormContainer>
             <FormHeadingContainer>
