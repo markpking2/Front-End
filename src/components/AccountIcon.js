@@ -24,6 +24,7 @@ const StyledDiv = styled.div`
 
 const FaIcon = styled(FontAwesomeIcon)`
   color: white;
+  cursor:pointer;
 
   &:hover {
     color: #24b4a5;

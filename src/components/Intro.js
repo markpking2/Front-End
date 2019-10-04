@@ -59,8 +59,8 @@ const StyledDiv = styled.div`
     padding: 2rem;
   }
   @media screen and (max-width: 550px) {
-    height: 700px;
-    padding: 2rem;
+    height: auto;
+    padding:0;
   }
 `;
 const WhenWords = styled.div`

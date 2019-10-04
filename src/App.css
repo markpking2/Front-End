@@ -98,3 +98,24 @@ table {
 .side-drawer.open{
   transform:translateX(0);
 }
+.app-footer-wrap{
+  height: 100%;
+  display: grid;
+  grid-template-rows: 2fr max-content;
+}
+.main-1{
+  grid-row: 1;
+}
+.main-2{
+  grid-row: 2;
+}
+.drawer-link{
+  color: #57CEB3;
+}
+.drawer-link:hover{
+  color:#57CEB3;
+  text-decoration:none;
+}
+.acc-icon-mobile{
+  background:#57CEB3;
+}

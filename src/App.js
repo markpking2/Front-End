@@ -20,15 +20,9 @@ const OuterDiv = styled.div`
   box-sizing: border-box;
   text-align: center;
   background: linear-gradient(to top, #c9d6ff, #e2e2e2);
-  height:auto;
-  min-height: 96vh;
+  min-height:96vh;
   padding-bottom: 2em;
-  @media screen and (max-width: 800px) {
-    min-height: 92vh;
-  }
-  @media screen and (max-width: 500px) {
-    min-height: 87vh;
-  }
+
 `;
 
 
@@ -46,9 +40,10 @@ const  drawerToggleClickHandler = () =>{
   }
   return (
     <div style={{height:'100%'}}>
-      <SideDrawer show={sideDrawerOpen}/>
+      <SideDrawer show={sideDrawerOpen} click={backdropClickHandler}/>
       {backdrop}
-      <OuterDiv>
+      <div className='app-footer-wrap'>
+      <OuterDiv className='main-1'>
         <header className="App-header">
           <Header drawerClickHandler={drawerToggleClickHandler}/>
           <Switch>
@@ -65,7 +60,8 @@ const  drawerToggleClickHandler = () =>{
           <PrivateRoute path="/account" component={MyAccount} />
         </header>
       </OuterDiv>
-      <Footer />
+      <Footer className='main-2'/>
+      </div>
     </div>
   );
 }
